@@ -10,7 +10,7 @@ export default function Blob() {
       { path: '#blob2' },
       { // options
         easing: 'easingCubicInOut',
-        yoyo: true, repeat: 1, duration: 2500, repeat: 1000
+        yoyo: true, repeat: 1000, duration: 2500, 
       }
     ).start();
 
