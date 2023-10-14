@@ -5,7 +5,19 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        gabarito: [
+          "Gabarito-Regular", "sans-serif"
+        ],
+        "gabarito-medium": [
+          "Gabarito-Medium", "sans-serif"
+        ],
+        "gabarito-bold": [
+          "Gabarito-Bold", "sans-serif"
+        ]
+      }
+    },
   },
   plugins: [],
 }
