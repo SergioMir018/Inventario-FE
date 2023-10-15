@@ -16,6 +16,13 @@ export default {
         "gabarito-bold": [
           "Gabarito-Bold", "sans-serif"
         ]
+      },
+      dropShadow: {
+        'lg': '0 0 100px theme("colors.purple.700")',
+        'neon': [
+          '0 0 40px theme("colors.purple.200")', 
+          '0 0 150px theme("colors.purple.700")'
+        ]
       }
     },
   },

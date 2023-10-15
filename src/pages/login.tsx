@@ -3,15 +3,17 @@ import LoginButton from "../components/login-button";
 
 export default function Login() {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen max-w-screen relative">
-      <section className="flex flex-col justify-center items-center gap-3 z-10 translate-y-[20vh] sm:translate-y-[25vh]">
-        <h1 className="text-white text-5xl mr-0 font-gabarito-medium">
-          Login
-        </h1>
-        <LoginButton />
-      </section>
-      <Blob />
-    </div>
+    <section className="flex overflow-hidden justify-center items-center max-w-screen min-h-screen">
+      <div className="group flex justify-center items-center">
+        <form className="flex flex-col absolute w-full sm:w-72 justify-center items-center gap-3 z-10">
+          <h1 className="inline-block text-white text-5xl mr-0 font-gabarito-medium">
+            Login
+          </h1>
+          <LoginButton />
+        </form>
+        <Blob />
+      </div>
+    </section>
   )
 }
 
