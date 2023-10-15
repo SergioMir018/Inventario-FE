@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply bg-[#24262e]
+    @apply bg-[#151515]
   }
 
   @font-face {
