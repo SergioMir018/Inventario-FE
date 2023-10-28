@@ -1,4 +1,4 @@
-import Google from "../icons/Google";
+import Google from "../../icons/Google";
 
 export default function LoginButton() {
   return (

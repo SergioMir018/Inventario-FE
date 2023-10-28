@@ -1,5 +1,5 @@
 import Blob from "../assets/Blob";
-import LoginForm from "../components/login-form";
+import LoginForm from "../components/login/login-form";
 
 export default function Login() {
   return (

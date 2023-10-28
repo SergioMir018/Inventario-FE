@@ -18,10 +18,10 @@ export default {
         ]
       },
       dropShadow: {
-        'lg': '0 0 100px theme("colors.purple.700")',
+        'lg': '0 0 100px #d2f56a',
         'neon': [
-          '0 0 40px theme("colors.purple.200")', 
-          '0 0 150px theme("colors.purple.700")'
+          '0 0 40px theme("#d3eac8")', 
+          '0 0 150px theme("#3d692c")'
         ]
       }
     },

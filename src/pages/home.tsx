@@ -1,6 +1,6 @@
-import AdminMenu from "../components/admin-menu";
-import HeaderHeadline from "../components/header-headline";
-import UserOpts from "../components/user-opts";
+import AdminMenu from "../components/home/admin-menu";
+import HeaderHeadline from "../components/home/header-headline";
+import UserOpts from "../components/home/user-opts";
 
 export default function Home() {
   return (
