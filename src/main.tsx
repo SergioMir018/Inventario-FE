@@ -9,17 +9,24 @@ import './index.css'
 
 import Home from "./pages/home"
 import Login from "./pages/login"
+import GeneralOverview from './components/home/general-overview/general-overview';
 
 const router = createHashRouter(
   [
     {
       path: '/',
       element: <Navigate to="/login" replace />,
-      index: true
+      index: true,
     },
     {
       path: '/home',
       element: <Home />,
+      children: [
+        {
+          path: 'overview',
+          element: <GeneralOverview />,
+        }
+      ]
     },
     {
       path: '/login',
