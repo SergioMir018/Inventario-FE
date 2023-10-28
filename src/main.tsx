@@ -1,7 +1,7 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   createHashRouter,
+  Navigate,
   RouterProvider
 } from 'react-router-dom'
 
@@ -14,6 +14,11 @@ const router = createHashRouter(
   [
     {
       path: '/',
+      element: <Navigate to="/login" replace />,
+      index: true
+    },
+    {
+      path: '/home',
       element: <Home />,
     },
     {
@@ -24,7 +29,5 @@ const router = createHashRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  <RouterProvider router={router} />
 )
