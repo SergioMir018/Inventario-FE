@@ -1,4 +1,4 @@
-import BusinessLogo from "./business-logo";
+import BusinessLogo from "../../icons/business-logo";
 
 export default function HeaderHeadline() {
   return (

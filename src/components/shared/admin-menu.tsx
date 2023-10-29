@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import ChartIcon from "./chart-icon";
-import CheckoutIcon from "./checkout-icon";
-import OrderIcon from "./order-icon";
-import SettingsIcon from "./settings-icon";
-import ShoppingBagIcon from "./shopping-bag-icon";
+import ChartIcon from "../../icons/chart-icon";
+import CheckoutIcon from "../../icons/checkout-icon";
+import OrderIcon from "../../icons/order-icon";
+import SettingsIcon from "../../icons/settings-icon";
+import ShoppingBagIcon from "../../icons/shopping-bag-icon";
 
 export default function AdminMenu() {
   return (

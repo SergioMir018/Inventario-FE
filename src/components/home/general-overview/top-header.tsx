@@ -1,5 +1,5 @@
-import SearchIcon from "../../shared/search-icon";
-import BellIcon from "../../shared/bell-icon";
+import SearchIcon from "../../../icons/search-icon.tsx";
+import BellIcon from "../../../icons/bell-icon.tsx";
 import UserCard from "../../user-card/user-card.tsx"
 
 export default function TopHeader() {

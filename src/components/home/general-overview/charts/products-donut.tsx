@@ -1,5 +1,7 @@
 import Chart from "react-apexcharts"
 
+import { positionType } from "../../../../types/apexcharts-types.ts"
+
 export default function ProductsDonut () {
   const state = {
     series: [68, 43, 15],
@@ -35,7 +37,7 @@ export default function ProductsDonut () {
       }
     },
     legend: {
-      position: 'bottom' as 'left' | 'right' | 'bottom' | 'top',
+      position: 'bottom' as positionType,
       labels: {
         colors: '#ffffff'
       }

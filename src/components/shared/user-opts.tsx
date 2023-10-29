@@ -1,4 +1,4 @@
-import LogOutIcon from "./logout-icon";
+import LogOutIcon from "../../icons/logout-icon";
 
 export default function UserOpts () {
   return (
