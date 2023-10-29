@@ -26,7 +26,7 @@ export default function SalesChart() {
       },
       title: {
         text: 'Ventas vs Ordenes',
-        align: 'left',
+        align: 'left' as 'center' | 'left' | 'right',
         style: {
           color: '#ffffff'
         }

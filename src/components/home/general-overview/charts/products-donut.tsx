@@ -27,14 +27,7 @@ export default function ProductsDonut () {
         opacity: 0.8
       }
     },
-    states: {
-      hover: {
-        filter: 'darken',
-        value: 0.5,
-      }
-    },
-      colors: ['#e94e2d', '#d2f56a', '#4b6a6f']
-    ,
+    colors: ['#e94e2d', '#d2f56a', '#4b6a6f'],
     title: {
       text: "Ventas por categoria",
       style: {
@@ -42,7 +35,7 @@ export default function ProductsDonut () {
       }
     },
     legend: {
-      position: 'bottom',
+      position: 'bottom' as 'left' | 'right' | 'bottom' | 'top',
       labels: {
         colors: '#ffffff'
       }
