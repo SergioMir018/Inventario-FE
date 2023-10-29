@@ -23,6 +23,12 @@ export default {
           '0 0 40px theme("#d3eac8")', 
           '0 0 150px theme("#3d692c")'
         ]
+      },
+      colors: {
+        "green": "#d2f56a",
+        "red": "#e94e2d",
+        "dark": "#1c1c1c",
+        "darker": "#151515",
       }
     },
   },

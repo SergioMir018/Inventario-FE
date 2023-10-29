@@ -1,7 +1,7 @@
 export default function SalesOverview() {
   return (
-    <section className="flex justify-between bg-[#1c1c1c] mt-[2rem] rounded-lg">
-      <div className="bg-[#d2f56a] text-black w-full py-5 pl-5 rounded-tl-lg rounded-bl-lg">
+    <section className="flex justify-between bg-dark mt-[2rem] rounded-xl">
+      <div className="bg-green text-black w-full py-5 pl-8 rounded-tl-xl rounded-bl-xl">
         <h1 className="font-gabarito text-lg">
           Ventas totales
         </h1>
@@ -17,7 +17,7 @@ export default function SalesOverview() {
           </p>
         </div>
       </div>
-      <div className="w-full py-5 pl-5 text-white">
+      <div className="w-full py-5 pl-8 text-white">
         <h1 className="font-gabarito text-lg">
           Visitantes
         </h1>
@@ -33,7 +33,7 @@ export default function SalesOverview() {
           </p>
         </div>
       </div>
-      <div className="w-full py-5 pl-5 border-l border-r border-white/10 text-white">
+      <div className="w-full py-5 pl-8 border-l border-r border-white/10 text-white">
         <h1 className="font-gabarito text-lg">
           Ordenes totales
         </h1>
@@ -49,7 +49,7 @@ export default function SalesOverview() {
           </p>
         </div>
       </div>
-      <div className="w-full py-5 pl-5 text-white">
+      <div className="w-full py-5 pl-8 text-white">
         <h1 className="font-gabarito text-lg">
           Devueltos
         </h1>
@@ -57,7 +57,7 @@ export default function SalesOverview() {
           780
         </h2>
         <div className="flex font-gabarito mt-[2rem]">
-          <p className="text-[#e94e2d]">
+          <p className="text-red">
             9.1%
           </p>
           <p className="ml-[2rem]">
