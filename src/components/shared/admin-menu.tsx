@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import ChartIcon from "../../icons/chart-icon";
-import CheckoutIcon from "../../icons/checkout-icon";
 import OrderIcon from "../../icons/order-icon";
-import SettingsIcon from "../../icons/settings-icon";
 import ShoppingBagIcon from "../../icons/shopping-bag-icon";
 
 export default function AdminMenu() {
@@ -12,28 +10,18 @@ export default function AdminMenu() {
       <ul className="flex flex-col font-gabarito-medium text-lg 
         text-white w-full pr-4">
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/home/overview'} className="flex flex-row items-center w-full py-2">
+          <Link to={'/admin/home/overview'} className="flex flex-row items-center w-full py-2">
             <ChartIcon /> Descripción general
           </Link>
         </li>
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/home/overview'} className="flex flex-row items-center w-full py-2">
+          <Link to={'/admin/home/overview'} className="flex flex-row items-center w-full py-2">
             <ShoppingBagIcon /> Productos 
           </Link> 
         </li>
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/home/overview'} className="flex flex-row items-center w-full py-2">
+          <Link to={'/admin/home/overview'} className="flex flex-row items-center w-full py-2">
             <OrderIcon /> Ordenes
-          </Link> 
-        </li>
-        <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/home/overview'} className="flex flex-row items-center w-full py-2">
-            <CheckoutIcon /> Checkout
-          </Link> 
-        </li>
-        <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/home/overview'} className="flex flex-row items-center w-full py-2">
-            <SettingsIcon /> Configuración
           </Link> 
         </li>
       </ul>
