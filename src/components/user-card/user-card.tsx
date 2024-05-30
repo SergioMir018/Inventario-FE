@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import UserPic from "./user-pic.tsx";
 import { GitHubUser } from "../../types/http-types.ts";
 import { Octokit } from "octokit";
+import { createOAuthUserAuth } from "@octokit/auth-oauth-user";
 
 export default function UserCard() {
   const [user, setUser] = useState<GitHubUser>();
@@ -9,10 +10,18 @@ export default function UserCard() {
   useEffect(() => {
     const fetchUser = async () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get('code');
+      const code = urlParams.get('code') as string;
+
+      const auth = createOAuthUserAuth({
+        clientId: import.meta.env.VITE_CLIENT_ID,
+        clientSecret: import.meta.env.VITE_CLIENT_SECRET,
+        code: code,
+      });
+
+      const {token} = await auth();
 
       const octokit = new Octokit({
-        auth: code
+        auth: token
       })
 
       const data = await octokit.request('GET /user', {
