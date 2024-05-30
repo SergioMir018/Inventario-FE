@@ -10,6 +10,8 @@ export default function UserCard() {
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get('code');
 
+      console.log(token);
+
 
       if (token) {
         try {
