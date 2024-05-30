@@ -31,6 +31,8 @@ export default function UserCard() {
           const data = await response.json();
           const accessToken = data.access_token;
 
+          console.log(accessToken);
+
           const userResponse = await fetch("https://api.github.com/user", {
             headers: {
               Authorization: `Bearer ${accessToken}`,
