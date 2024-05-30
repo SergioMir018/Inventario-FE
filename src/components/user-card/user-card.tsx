@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import UserPic from "./user-pic.tsx";
 import { GitHubUser } from "../../types/http-types.ts";
+import { Octokit } from "octokit";
 
 export default function UserCard() {
   const [user, setUser] = useState<GitHubUser>();
@@ -10,46 +11,19 @@ export default function UserCard() {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
 
-      if (code) {
-        try {
-          const response = await fetch("https://github.com/login/oauth/access_token", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-              client_id: import.meta.env.VITE_CLIENT_ID,
-              client_secret: import.meta.env.VITE_CLIENT_SECRET,
-              code: code,
-            }),
-          });
+      const octokit = new Octokit({
+        auth: code
+      })
 
-          if (!response.ok) {
-            throw new Error(`Error al obtener el token de acceso: ${response.statusText}`);
-          }
-
-          const data = await response.json();
-          const accessToken = data.access_token;
-
-          console.log(accessToken);
-
-          const userResponse = await fetch("https://api.github.com/user", {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          });
-
-          if (!userResponse.ok) {
-            throw new Error(`Error al obtener los datos del usuario: ${userResponse.statusText}`);
-          }
-
-          const userData = await userResponse.json();
-          setUser(userData);
-        } catch (error) {
-          console.error("Error:", error);
+      const data = await octokit.request('GET /user', {
+        headers: {
+          'X-GitHub-Api-Version': '2022-11-28'
         }
-      }
+      }).then((response) => {
+        return response.data;
+      })
+
+      setUser(data);
     };
 
     fetchUser();
