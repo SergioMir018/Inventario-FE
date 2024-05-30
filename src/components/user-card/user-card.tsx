@@ -13,7 +13,7 @@ export default function UserCard() {
       if (code) {
         try {
           const response = await fetch("https://github.com/login/oauth/access_token", {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               'Accept': 'application/json'
