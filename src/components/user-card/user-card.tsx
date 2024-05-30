@@ -7,13 +7,9 @@ export default function UserCard() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = localStorage.getItem("github_access_token");
-      
-      if (token) {
-        console.log(token);
-      } else {
-        console.log('No token');
-      }
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('code');
+
 
       if (token) {
         try {
