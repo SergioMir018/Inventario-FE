@@ -16,6 +16,7 @@ export default function UserCard() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              'Accept': 'application/json'
             },
             body: JSON.stringify({
               client_id: import.meta.env.VITE_CLIENT_ID,
