@@ -8,27 +8,43 @@ export default function UserCard() {
   useEffect(() => {
     const fetchUser = async () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get('code');
+      const code = urlParams.get('code');
 
-      console.log(token);
-
-
-      if (token) {
+      if (code) {
         try {
-          const response = await fetch("https://api.github.com/user", {
+          const response = await fetch("https://github.com/login/oauth/access_token", {
+            method: "POST",
             headers: {
-              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
             },
+            body: JSON.stringify({
+              client_id: import.meta.env.VITE_CLIENT_ID,
+              client_secret: import.meta.env.VITE_CLIENT_SECRET,
+              code: code,
+            }),
           });
 
           if (!response.ok) {
-            throw new Error(`Error al obtener los datos del usuario: ${response.statusText}`);
+            throw new Error(`Error al obtener el token de acceso: ${response.statusText}`);
           }
 
           const data = await response.json();
-          setUser(data);
+          const accessToken = data.access_token;
+
+          const userResponse = await fetch("https://api.github.com/user", {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+
+          if (!userResponse.ok) {
+            throw new Error(`Error al obtener los datos del usuario: ${userResponse.statusText}`);
+          }
+
+          const userData = await userResponse.json();
+          setUser(userData);
         } catch (error) {
-          console.error("Error al obtener los datos del usuario:", error);
+          console.error("Error:", error);
         }
       }
     };
