@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function OrderItem() {
   return (
     <div className='w-full min-h-40 flex justify-between bg-dark rounded-lg'>
