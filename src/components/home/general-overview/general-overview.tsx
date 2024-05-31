@@ -1,4 +1,4 @@
-import TopHeader from "./top-header.tsx"
+import TopHeader from "../../shared/top-header.tsx"
 import ChartsSection from "./charts-section.tsx"
 
 export default function GeneralOverview() {

@@ -15,12 +15,12 @@ export default function AdminMenu() {
           </Link>
         </li>
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/admin/home/overview'} className="flex flex-row items-center w-full py-2">
+          <Link to={'/admin/home/products'} className="flex flex-row items-center w-full py-2">
             <ShoppingBagIcon /> Productos 
           </Link> 
         </li>
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/admin/home/overview'} className="flex flex-row items-center w-full py-2">
+          <Link to={'/admin/home/orders'} className="flex flex-row items-center w-full py-2">
             <OrderIcon /> Ordenes
           </Link> 
         </li>
