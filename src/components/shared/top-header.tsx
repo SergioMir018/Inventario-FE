@@ -1,6 +1,4 @@
-import SearchIcon from "../../../icons/search-icon.tsx";
-import BellIcon from "../../../icons/bell-icon.tsx";
-import UserCard from "../../user-card/user-card.tsx"
+import UserCard from "../user-card/user-card.tsx"
 
 export default function TopHeader() {
   return (
@@ -14,8 +12,6 @@ export default function TopHeader() {
           </h3>
         </div>
         <div className="text-white flex mt-3 items-center h-[50%]">
-          <SearchIcon />
-          <BellIcon />
           <UserCard />
         </div>
       </nav>

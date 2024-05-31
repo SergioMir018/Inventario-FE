@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LogOutIcon from "../../icons/logout-icon";
 
 export default function UserOpts () {
@@ -6,15 +7,9 @@ export default function UserOpts () {
       rounded-tr-3xl pt-3 items-center">
       <ul className="flex flex-col font-gabarito-medium text-lg 
         text-white w-full pr-4">
-        <li className="rounded-lg flex flex-row items-center pl-2 w-full py-3 hover:bg-white hover:text-black transition duration-100">
-          Ayuda
-        </li>
-        <li className="rounded-lg flex flex-row items-center pl-2 w-full py-3 hover:bg-white hover:text-black transition duration-100">
-          Contactanos
-        </li>
-        <li className="rounded-lg flex flex-row items-center w-full py-2 hover:bg-white hover:text-black transition duration-100">
+        <Link to={'#'} className="rounded-lg flex flex-row items-center w-full py-2 hover:bg-white hover:text-black transition duration-100">
           <LogOutIcon /> Log out
-        </li>
+        </Link>
       </ul>
     </section>
   )

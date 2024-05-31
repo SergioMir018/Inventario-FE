@@ -10,6 +10,8 @@ import './index.css'
 import Home from "./pages/home"
 import Login from "./pages/login"
 import GeneralOverview from './components/home/general-overview/general-overview';
+import Products from './components/home/products/products'
+import Orders from './components/home/orders/orders'
 
 const router = createHashRouter(
   [
@@ -25,6 +27,14 @@ const router = createHashRouter(
         {
           path: 'overview',
           element: <GeneralOverview />,
+        },
+        {
+          path: 'products',
+          element: <Products />,
+        },
+        {
+          path: 'orders',
+          element: <Orders />,
         }
       ]
     },
