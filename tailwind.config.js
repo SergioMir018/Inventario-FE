@@ -19,7 +19,7 @@ export default {
       },
       dropShadow: {
         'lg': '0 0 100px #d2f56a',
-        'sm': '1px 1px 5px #d2f56a',
+        'sm': '1px 1px 3px #d2f56a',
         'neon': [
           '0 0 40px theme("#d3eac8")', 
           '0 0 150px theme("#3d692c")'
