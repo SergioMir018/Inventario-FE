@@ -1,6 +1,6 @@
 export default function ProductsItem() {
   return (
-    <div className='min-h-80 flex flex-col justify-between bg-dark rounded-lg hover:drop-shadow-sm group-hover:drop-shadow-neon transition duration-100'>
+    <div className='h-96 flex flex-col justify-between bg-dark rounded-lg hover:drop-shadow-sm group-hover:drop-shadow-neon transition duration-100'>
       <div className='h-32 w-full bg-gray-500 rounded-tr-lg rounded-tl-lg'>
         
       </div>
