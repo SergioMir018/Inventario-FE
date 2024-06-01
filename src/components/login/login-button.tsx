@@ -9,10 +9,10 @@ export default function LoginButton() {
   return (
     <button 
     type="button" 
-    className="text-white bg-gray hover:bg-gray/90
-    focus:ring-4 focus:outline-none focus:ring-gray/50 font-gabarito-bold 
+      className="text-white bg-metal hover:bg-metal/90
+    focus:ring-4 focus:outline-none focus:ring-metal/50 font-gabarito-bold 
     rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center 
-    dark:focus:ring-[#4285F4]/55"
+    dark:focus:ring-metal/50"
     onClick={loginWithGithub}
     >
       <Github />
