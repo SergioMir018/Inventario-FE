@@ -1,7 +1,8 @@
 import AdminMenu from "../components/shared/admin-menu";
 import HeaderHeadline from "../components/shared/header-headline";
+import TopHeader from "../components/shared/top-header";
 import UserOpts from "../components/shared/user-opts";
-import GeneralOverview from '../components/home/general-overview/general-overview';
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
         <UserOpts />
       </header>
       <main className="w-screen ml-[5rem] mr-[5rem] mt-[3rem]">
-        <GeneralOverview />
+        <TopHeader />
+        <Outlet />
       </main>
     </section>
   )
