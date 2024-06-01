@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Badge from "../../shared/badge";
 import OrderStateDropDown from "./order-state-dropdown";
 
 export default function OrderItem() {
-  const [orderState, setOrderState] = useState("En espera")
+  const [orderState, setOrderState] = useState("Estado de la orden...")
 
 
   return (
@@ -13,7 +12,6 @@ export default function OrderItem() {
           <p className='text-white font-gabarito-medium text-xl'>
             Orden #123456
           </p>
-          <Badge text={orderState.toLocaleLowerCase()} />
         </div>
         <div className="w-full flex justify-between">
           <label className='text-white/50 text-md font-gabarito'>
@@ -39,9 +37,14 @@ export default function OrderItem() {
             $150.99
           </p>
         </div>
-        <div className='w-full mt-5 flex gap-5 justify-between relative'>
-          <button className='py-1 px-5 text-white font-gabarito-bold rounded-md border-2 border-dark hover:border-white  transition duration-100'>Detalles</button>
-          <OrderStateDropDown setOrderState={setOrderState} />
+        <div className='w-full mt-5 flex gap-5 justify-end relative'>
+          <button className='py-1 px-5 text-white font-gabarito-bold rounded-md border-2 border-dark hover:border-white  transition duration-100 absolute left-0 bottom-0'>Detalles</button>
+          <div className="flex flex-col gap-1 w-[50%]">
+            <label className='text-white/50 text-md font-gabarito'>
+              Estado de la orden:
+            </label>
+            <OrderStateDropDown setOrderState={setOrderState} order={orderState} />
+          </div>
         </div>
       </div>
     </div>
