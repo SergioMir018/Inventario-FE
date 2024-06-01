@@ -8,7 +8,7 @@ export default function ProductsItem() {
         <p className='text-white ml-5 text-2xl font-gabarito-medium pt-5'>
           Article#24234
         </p>
-        <p className='text-white/60 ml-5 text-sm font-gabarito pt-5'>
+        <p className='text-white/60 mx-5 text-sm font-gabarito pt-5'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, tenetur quisquam ratione, excepturi nemo unde, perspiciatis dicta a vitae facere cumque non! Velit aliquam ea, tempore quisquam minus accusamus molestiae!
         </p>
         <div className='w-48 ml-5 mt-5 flex justify-between'>
