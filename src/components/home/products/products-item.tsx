@@ -11,9 +11,10 @@ export default function ProductsItem() {
         <p className='text-white/50 mx-5 text-sm font-gabarito pt-5'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, tenetur quisquam ratione, excepturi nemo unde, perspiciatis dicta a vitae facere cumque non! Velit aliquam ea, tempore quisquam minus accusamus molestiae!
         </p>
-        <div className='w-48 ml-5 mt-5 flex justify-between'>
+        <div className='w-72 ml-5 mt-5 flex justify-between'>
           <button className='py-1 px-5 mb-3 text-white font-gabarito-bold rounded-md hover:bg-white hover:text-black transition duration-100'>Editar</button>
           <button className='py-1 px-5 mb-3 text-white font-gabarito-bold border-2 border-dark rounded-md hover:border-2 hover:border-white hover:text-red transition duration-100'>Eliminar</button>
+          <button className='py-1 px-5 mb-3 text-white font-gabarito-bold border-2 border-dark rounded-md hover:border-2 hover:border-white transition duration-100'>Más info</button>
         </div>
         <p className="text-green text-3xl font-gabarito-bold absolute right-8 bottom-3">$35</p>
       </div>
