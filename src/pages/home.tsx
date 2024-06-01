@@ -1,5 +1,6 @@
 import AdminMenu from "../components/shared/admin-menu";
 import HeaderHeadline from "../components/shared/header-headline";
+import TopHeader from "../components/shared/top-header";
 import UserOpts from "../components/shared/user-opts";
 import { Outlet } from "react-router-dom";
 
@@ -13,6 +14,7 @@ export default function Home() {
         <UserOpts />
       </header>
       <main className="w-screen ml-[5rem] mr-[5rem] mt-[3rem]">
+        <TopHeader />
         <Outlet />
       </main>
     </section>
