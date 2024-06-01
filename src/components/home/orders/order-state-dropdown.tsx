@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react"
 import useOutsideClick from "../../../hooks/useOutsideClickHook"
 
 interface OrderStateDropdownProps {
-  setOrderState: (orderState: string) => void
+  setOrderState: (orderState: string) => void,
+  order: string,
 }
 
-export default function OrderStateDropDown({setOrderState}: OrderStateDropdownProps) {
+export default function OrderStateDropDown({setOrderState, order}: OrderStateDropdownProps) {
 
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
@@ -39,8 +40,8 @@ export default function OrderStateDropDown({setOrderState}: OrderStateDropdownPr
   }
 
   return (
-    <div ref={dropdownRef} className="flex flex-col absolute right-0 w-[50%]">
-      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-grey font-gabarito-medium hover:bg-darker focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between" type="button" onClick={handleOnDropDownClick}>Estado de la orden...<svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+    <div ref={dropdownRef} className="flex flex-col right-0 w-full relative">
+      <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-grey font-gabarito-medium hover:bg-darker focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between" type="button" onClick={handleOnDropDownClick}>{order}<svg className="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
       </svg>
       </button>

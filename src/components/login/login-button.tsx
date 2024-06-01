@@ -1,4 +1,4 @@
-import Google from "../../icons/Google";
+import Github from "../../icons/github";
 
 export default function LoginButton() {
   function loginWithGithub() {
@@ -9,14 +9,14 @@ export default function LoginButton() {
   return (
     <button 
     type="button" 
-    className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90
-    focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-gabarito-bold 
+    className="text-white bg-gray hover:bg-gray/90
+    focus:ring-4 focus:outline-none focus:ring-gray/50 font-gabarito-bold 
     rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center 
     dark:focus:ring-[#4285F4]/55"
     onClick={loginWithGithub}
     >
-      <Google />
-      Sing in with Google
+      <Github />
+      Sing in with Github
     </button>
   )
 }
