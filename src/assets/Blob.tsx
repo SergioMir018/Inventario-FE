@@ -19,7 +19,7 @@ export default function Blob() {
   return (
     <svg id="visual" className='blur z-0 relative opacity-50 drop-shadow-lg group-hover:drop-shadow-neon
       group-hover:opacity-100 h-[250px] max-w-screen sm:h-[600px] sm:w-[700px] md:h-[600px] md:w-[800px]
-      lg:w-[900px] lg:h-[600px] transition duration-700 ease-in-out' viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"
+      lg:w-[1000px] lg:h-[700px] transition duration-700 ease-in-out' viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"
       version="1.1">
       <g transform="translate(470.13994821379146 305.49864079264313)">
         <path id="blob1" d="M140.6 -212.3C170.3 -171.9 174.3 -114.9 187.7 -63.4C201 -12 223.7 34 222.5 
