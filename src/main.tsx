@@ -8,7 +8,7 @@ import {
 import './index.css'
 
 import Home from "./pages/home"
-import Login from "./pages/login"
+import Session from "./pages/session"
 import GeneralOverview from './components/home/general-overview/general-overview';
 import Products from './components/home/products/products'
 import Orders from './components/home/orders/orders'
@@ -17,7 +17,7 @@ const router = createHashRouter(
   [
     {
       path: '/',
-      element: <Navigate to="/login" replace />,
+      element: <Navigate to="/session" replace />,
       index: true,
     },
     {
@@ -39,8 +39,8 @@ const router = createHashRouter(
       ]
     },
     {
-      path: '/login',
-      element: <Login />
+      path: '/session',
+      element: <Session />
     }
   ]
 )
