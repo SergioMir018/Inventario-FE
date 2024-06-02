@@ -11,8 +11,8 @@ export default function TopProducts () {
         </h2>
         <ProductsSearch />
       </div>
-      <TopProductsCategories />
-      <div className="w-full h-72 overflow-y-auto pr-5 pb-12">
+      <div className="w-full h-72 overflow-y-auto mt-8 pr-5 pb-10">
+        <TopProductsCategories />
         <TopProductsItem />
         <TopProductsItem />
         <TopProductsItem />
