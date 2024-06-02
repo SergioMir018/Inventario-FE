@@ -7,11 +7,12 @@ import {
 
 import './index.css'
 
-import Home from "./pages/home"
+import AdminHome from "./pages/admin-home"
 import Session from "./pages/session"
-import GeneralOverview from './components/home/general-overview/general-overview';
-import Products from './components/home/products/products'
-import Orders from './components/home/orders/orders'
+import GeneralOverview from './components/admin-home/general-overview/general-overview';
+import Products from './components/admin-home/products/products'
+import Orders from './components/admin-home/orders/orders'
+import ClientHome from './pages/client-home'
 
 const router = createHashRouter(
   [
@@ -21,8 +22,8 @@ const router = createHashRouter(
       index: true,
     },
     {
-      path: '/admin/home',
-      element: <Home />,
+      path: 'admin/home',
+      element: <AdminHome />,
       children: [
         {
           path: 'overview',
@@ -39,7 +40,11 @@ const router = createHashRouter(
       ]
     },
     {
-      path: '/session',
+      path: 'client/home',
+      element: <ClientHome />
+    },
+    {
+      path: 'session',
       element: <Session />
     }
   ]
