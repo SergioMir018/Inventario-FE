@@ -7,7 +7,7 @@ export default function UserOpts () {
       rounded-tr-3xl pt-3 items-center">
       <ul className="flex flex-col font-gabarito-medium text-lg 
         text-white w-full pr-4">
-        <Link to={'#'} className="rounded-lg flex flex-row items-center w-full py-2 hover:bg-white hover:text-black transition duration-100">
+        <Link to={'/session'} className="rounded-lg flex flex-row items-center w-full py-2 hover:bg-white hover:text-black transition duration-100">
           <LogOutIcon /> Log out
         </Link>
       </ul>
