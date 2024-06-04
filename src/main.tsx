@@ -13,6 +13,8 @@ import GeneralOverview from './components/admin-home/general-overview/general-ov
 import Products from './components/admin-home/products/products'
 import Orders from './components/admin-home/orders/orders'
 import ClientHome from './pages/client-home'
+import Shop from './components/client-home/shop/shop'
+import Cart from './components/client-home/cart/cart'
 
 const router = createHashRouter(
   [
@@ -41,7 +43,17 @@ const router = createHashRouter(
     },
     {
       path: '/:id/client',
-      element: <ClientHome />
+      element: <ClientHome />,
+      children: [
+        {
+          path: 'shop',
+          element: <Shop />,
+        },
+        {
+          path: 'cart',
+          element: <Cart />,
+        }
+      ]
     },
     {
       path: 'session',

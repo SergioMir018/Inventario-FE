@@ -1,19 +1,32 @@
 import { useState } from 'react'
-import UserCard from '../../user-card/user-card'
+import UserCard from '../user-card/user-card'
 import classNames from 'classnames'
+import { useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
 
+  const navigate = useNavigate()
+
   const [isShop, setIsShop] = useState(true)
 
+  const handleSectionChange = (section: string) => {
+    if (section === 'shop') {
+      setIsShop(true)
+      navigate('shop')
+    } else {
+      setIsShop(false)
+      navigate('cart')
+    }
+  }
+
   return (
-    <nav className='w-full h-16 relative border-b-2 flex justify-center border-white/10'>
+    <nav className='h-16 w-full relative border-b-2 flex justify-center border-white/10'>
       <div className='h-full relative flex flex-col'>
         <div className='h-full flex gap-8 items-center font-gabarito-medium text-xl'>
-          <p className='cursor-pointer h-full flex justify-center items-center' onClick={() => setIsShop(true)}>
+          <p className='cursor-pointer h-full flex justify-center items-center' onClick={() => handleSectionChange('shop')}>
             Tienda
           </p>
-          <p className='cursor-pointer h-full flex justify-center items-center' onClick={() => setIsShop(false)}>
+          <p className='cursor-pointer h-full flex justify-center items-center' onClick={() => handleSectionChange('cart')}>
             Carrito
           </p>
         </div>
