@@ -3,13 +3,19 @@ import LoginForm from "./login-form";
 import SectionButton from "./section-button";
 import SingUpForm from "./sing-up-form";
 import FormButton from "./login-button";
+import { useNavigate } from "react-router-dom";
 
 export default function Form() {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const handleButtonClick = (index: number) => {
     setClickedIndex(index);
   };
+
+  const handleGestButtonClick = () => {
+    navigate('/client/home')
+  }
 
   return (
     <section className="flex flex-col absolute w-full sm:w-72 justify-center items-center gap-3 z-10">
@@ -17,7 +23,7 @@ export default function Form() {
         Bienvenid@
       </h1>
       <p className="text-white font-gabarito-medium w-full text-center group-hover:text-black transition-colors duration-150 ease-in-out">
-        Inicia sesión, loggeate o entra como visitante para empezar
+        Inicia sesión, loggeate o entra como invitado para empezar
       </p>
       <div className="w-screen justify-center flex gap-4">
         <SectionButton
@@ -46,9 +52,9 @@ export default function Form() {
         clickedIndex === 2 && (
           <div className="w-full">
             <p className="text-white my-5 font-gabarito-medium w-full text-center flex justify-center group-hover:text-black transition-colors duration-150 ease-in-out">
-              Continua como visitante para explorar la nuestra web sin iniciar sesión
+              Continua como invitado para explorar la nuestra web sin iniciar sesión
             </p>
-            <FormButton text="Continua como Visitante" />
+            <FormButton text="Continua como Invitado" action={handleGestButtonClick} />
           </div>
         )
       }
