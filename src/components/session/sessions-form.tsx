@@ -2,8 +2,8 @@ import { useState } from "react";
 import LoginForm from "./login-form";
 import SectionButton from "./section-button";
 import SingUpForm from "./sing-up-form";
-import FormButton from "./login-button";
 import { useNavigate } from "react-router-dom";
+import FormButton from "./form-button";
 
 export default function Form() {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
