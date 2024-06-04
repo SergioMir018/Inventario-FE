@@ -14,7 +14,7 @@ export default function Form() {
   };
 
   const handleGestButtonClick = () => {
-    navigate('/client/home')
+    navigate('/id=gest/client')
   }
 
   return (
