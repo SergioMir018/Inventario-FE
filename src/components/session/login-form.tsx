@@ -30,7 +30,11 @@ export default function LoginForm() {
 
       const {id, role}: HTTPLoginResponse = response.data;
 
-      navigate(`/id=${id}/${role}/home`);
+      if (role === 'client') {
+        navigate(`/id=${id}/client`);
+      } else {
+        navigate(`/id=${id}/${role}`);
+      }
 
     } catch (error) {
       console.error('Login error:', error);

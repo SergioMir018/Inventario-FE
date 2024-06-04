@@ -22,8 +22,8 @@ const router = createHashRouter(
       index: true,
     },
     {
-      path: '/:id/:role/home',
-      element: <Home />,
+      path: '/:id/:role',
+      element: <AdminHome />,
       children: [
         {
           path: 'overview',
@@ -40,7 +40,7 @@ const router = createHashRouter(
       ]
     },
     {
-      path: 'client/home',
+      path: '/:id/client',
       element: <ClientHome />
     },
     {

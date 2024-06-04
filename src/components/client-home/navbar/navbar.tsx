@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import UserCard from '../../user-card/user-card'
 import classNames from 'classnames'
 
