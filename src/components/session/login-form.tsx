@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { HTTPLoginResponse } from "../../types/http-types";
+import { BASE_URL } from "../../types/constants,";
 
 interface ILoginForm {
   identifier: string;
@@ -17,7 +18,7 @@ export default function LoginForm() {
 
   const loginFormAction: SubmitHandler<ILoginForm> = async (data: { identifier: string, password: string }) => {
     try {
-      const response = await axios.post('http://localhost:8080/user/login', null, {
+      const response = await axios.post(`${BASE_URL}/user/login`, null, {
         params: {
           q: data.identifier,
           p: data.password
@@ -29,9 +30,7 @@ export default function LoginForm() {
 
       const {id, role}: HTTPLoginResponse = response.data;
 
-      if (role === "admin") {
-        navigate("/admin/home");
-      }
+      navigate(`/id=${id}/${role}/home`);
 
     } catch (error) {
       console.error('Login error:', error);

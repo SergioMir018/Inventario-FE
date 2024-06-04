@@ -13,6 +13,7 @@
   "dependencies": {
     "@nextui-org/react": "2.1.13",
     "@octokit/auth-oauth-user": "^5.1.1",
+    "@types/uuid": "9.0.8",
     "apexcharts": "3.44.0",
     "axios": "1.7.2",
     "classnames": "2.5.1",

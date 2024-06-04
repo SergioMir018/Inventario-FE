@@ -10,17 +10,17 @@ export default function AdminMenu() {
       <ul className="flex flex-col font-gabarito-medium text-lg 
         text-white w-full pr-4">
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/admin/home/overview'} className="flex flex-row items-center w-full py-2">
+          <Link to={'overview'} className="flex flex-row items-center w-full py-2">
             <ChartIcon /> Descripción general
           </Link>
         </li>
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/admin/home/products'} className="flex flex-row items-center w-full py-2">
+          <Link to={'products'} className="flex flex-row items-center w-full py-2">
             <ShoppingBagIcon /> Productos 
           </Link> 
         </li>
         <li className="rounded-lg hover:bg-white hover:text-black transition duration-100">
-          <Link to={'/admin/home/orders'} className="flex flex-row items-center w-full py-2">
+          <Link to={'orders'} className="flex flex-row items-center w-full py-2">
             <OrderIcon /> Ordenes
           </Link> 
         </li>
