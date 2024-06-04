@@ -16,7 +16,7 @@ export default function LoginForm() {
 
   const {register, handleSubmit} = useForm<ILoginForm>()
 
-  const loginFormAction: SubmitHandler<ILoginForm> = async (data: { identifier: string, password: string }) => {
+  const loginFormAction: SubmitHandler<ILoginForm> = async (data: ILoginForm) => {
     try {
       const response = await axios.post(`${BASE_URL}/user/login`, null, {
         params: {
