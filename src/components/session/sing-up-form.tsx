@@ -1,4 +1,4 @@
-import FormButton from "./login-button";
+import FormButton from "./form-button";
 
 export default function SingUpForm() {
   return (
