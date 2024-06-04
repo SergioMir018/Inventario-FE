@@ -9,11 +9,11 @@ export default function Navbar() {
   return (
     <nav className='w-full h-16 relative border-b-2 flex justify-center border-white/10'>
       <div className='h-full relative flex flex-col'>
-        <div className='h-full flex gap-10 items-center font-gabarito-medium text-xl'>
-          <p className='cursor-pointer' onClick={() => setIsShop(true)}>
+        <div className='h-full flex gap-8 items-center font-gabarito-medium text-xl'>
+          <p className='cursor-pointer h-full flex justify-center items-center' onClick={() => setIsShop(true)}>
             Tienda
           </p>
-          <p className='cursor-pointer' onClick={() => setIsShop(false)}>
+          <p className='cursor-pointer h-full flex justify-center items-center' onClick={() => setIsShop(false)}>
             Carrito
           </p>
         </div>
