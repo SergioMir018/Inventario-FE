@@ -19,3 +19,8 @@ export type Product = {
   price: number;
 };
 
+export type User = {
+  name: string;
+  email: string;
+}
+
