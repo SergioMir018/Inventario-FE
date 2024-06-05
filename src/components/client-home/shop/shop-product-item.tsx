@@ -27,7 +27,7 @@ export default function ShopProductsItem({ product }: ShopProductsItemProps) {
           </button>
         </div>
         <p className="text-green text-3xl font-gabarito-bold absolute right-8 bottom-16">
-          $35
+          ${product.price}
         </p>
       </div>
     </div>

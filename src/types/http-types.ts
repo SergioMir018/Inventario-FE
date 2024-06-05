@@ -16,5 +16,6 @@ export type Product = {
   short_desc: string;
   desc: string;
   photo: string;
+  price: number;
 };
 
