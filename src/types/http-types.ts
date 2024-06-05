@@ -10,3 +10,12 @@ export type HTTPLoginResponse = {
   role: string;
 }
 
+export type Product = {
+  id: string;
+  name: string;
+  short_desc: string;
+  desc: string;
+  photo: string;
+  price: number;
+};
+
