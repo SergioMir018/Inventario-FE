@@ -15,6 +15,7 @@ import Orders from './components/admin-home/orders/orders'
 import ClientHome from './pages/client-home'
 import Shop from './components/client-home/shop/shop'
 import Cart from './components/client-home/cart/cart'
+import { CartProvider } from './context/cart-context'
 
 const router = createHashRouter(
   [
@@ -67,5 +68,7 @@ const router = createHashRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />
+  <CartProvider>
+    <RouterProvider router={router} />
+  </CartProvider>
 )
