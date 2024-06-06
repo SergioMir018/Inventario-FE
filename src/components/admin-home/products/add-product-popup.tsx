@@ -37,6 +37,7 @@ export default function AddProductPopup() {
         const arrayBuffer = reader.result;
         const base64Image = arrayBufferToBase64(arrayBuffer);
         setFile(base64Image);
+        console.log(base64Image)
       };
     }
   }
