@@ -4,6 +4,7 @@ import { useState, ChangeEvent } from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from 'axios';
 import { BASE_URL } from '../../../types/constants,';
+import PopUp from "../../shared/pop-up";
 
 interface IInsertNewProductForm {
   name: string;
@@ -12,7 +13,7 @@ interface IInsertNewProductForm {
   price: string;
 }
 
-export default function AddProductPopup() {
+export default function AddProductForm() {
 
   const [file, setFile] = useState<string>();
   const [fileScr, setFileScr] = useState<string>('');
@@ -89,7 +90,7 @@ export default function AddProductPopup() {
   };
 
   return (
-    <div className="absolute w-screen h-screen bg-black/70 z-30 flex justify-center items-center text-white font-gabarito">
+    <PopUp>
       <div className=" w-[35rem] bg-dark rounded-md flex flex-col justify-between">
         <div className="w-full flex justify-end mt-2 pr-2">
           <button className="w-6 h-6" onClick={handleClosePopUpClick}><CloseIcon /></button>
@@ -113,6 +114,6 @@ export default function AddProductPopup() {
           <button type="submit" className="bg-white text-black mt-5 py-2 font-gabarito-bold rounded-md hover:bg-white/80 transition duration-100">Agregar producto</button>
         </form>
       </div>
-    </div>
+    </PopUp>
   )
 }

@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode, useEffect } from 'react';
-import {CartItemProduct} from '../types/shop'
+import { CartItemProduct } from '../types/shop';
 
 interface CartContextType {
   cart: CartItemProduct[];
@@ -8,6 +8,7 @@ interface CartContextType {
   removeFromCart: (id: string) => void;
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
+  calculateTotal: () => number;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -50,8 +51,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const calculateTotal = () => {
+    return cart.reduce((acc, item) => acc + (item.itemPrice * item.quantity), 0);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, incrementQuantity, decrementQuantity }}>
+    <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, incrementQuantity, decrementQuantity, calculateTotal }}>
       {children}
     </CartContext.Provider>
   );
