@@ -15,6 +15,7 @@ import Orders from './components/admin-home/orders/orders'
 import ClientHome from './pages/client-home'
 import Shop from './components/client-home/shop/shop'
 import Cart from './components/client-home/cart/cart'
+import { CartProvider } from './context/cart-context'
 
 const router = createHashRouter(
   [
@@ -34,10 +35,13 @@ const router = createHashRouter(
         {
           path: 'products',
           element: <Products />,
-        },
-        {
-          path: 'products/addProduct',
-          element: <Products />,
+
+          children: [
+            {
+              path: 'addProduct',
+              element: <Products />
+            }
+          ]
         },
         {
           path: 'orders',
@@ -56,6 +60,12 @@ const router = createHashRouter(
         {
           path: 'cart',
           element: <Cart />,
+          children: [
+            {
+              path: 'checkout',
+              element: <Cart />
+            }
+          ]
         }
       ]
     },
@@ -67,5 +77,7 @@ const router = createHashRouter(
 )
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />
+  <CartProvider>
+    <RouterProvider router={router} />
+  </CartProvider>
 )

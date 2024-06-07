@@ -3,7 +3,7 @@ import HeaderHeadline from "../components/shared/header-headline";
 import TopHeader from "../components/shared/top-header";
 import UserOpts from "../components/shared/user-opts";
 import { Outlet, useLocation } from "react-router-dom";
-import AddProductPopup from '../components/admin-home/products/add-product-popup';
+import AddProductForm from '../components/admin-home/products/add-product-form';
 
 export default function AdminHome() {
 
@@ -13,7 +13,7 @@ export default function AdminHome() {
 
   return (
     <section className="flex min-w-screen min-h-screen">
-      {isAddProductRoute && <AddProductPopup />}
+      {isAddProductRoute && <AddProductForm />}
       <header className="flex flex-col gap-1 pl-10 pt-5 my-[3rem] min-w-[15rem]
         border-r-2 border-white/10">
         <HeaderHeadline />

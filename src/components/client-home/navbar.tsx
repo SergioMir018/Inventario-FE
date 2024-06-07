@@ -1,21 +1,27 @@
-import { useState } from 'react'
-import UserCard from '../user-card/user-card'
-import classNames from 'classnames'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import UserCard from '../user-card/user-card';
+import classNames from 'classnames';
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const navigate = useNavigate()
+  const [isShop, setIsShop] = useState(true);
 
-  const [isShop, setIsShop] = useState(true)
+  useEffect(() => {
+    if (location.pathname.includes('shop')) {
+      setIsShop(true);
+    } else if (location.pathname.includes('cart')) {
+      setIsShop(false);
+    }
+  }, [location]);
 
   const handleSectionChange = (section: string) => {
     if (section === 'shop') {
-      setIsShop(true)
-      navigate('shop')
+      navigate('shop');
     } else {
-      setIsShop(false)
-      navigate('cart')
+      navigate('cart');
     }
   }
 
@@ -42,5 +48,5 @@ export default function Navbar() {
         <UserCard />
       </div>
     </nav>
-  )
+  );
 }

@@ -33,7 +33,7 @@ export default function ProductsItem({ product }: ProductItemProps) {
     <div className='h-[26rem] flex flex-col gap-3 bg-dark rounded-lg hover:drop-shadow-sm group-hover:drop-shadow-neon transition duration-100'>
       <div className='h-60 w-full bg-gray-500 rounded-tr-lg rounded-tl-lg'>
         <img
-          src={`http://localhost:8080/${product.photo}`}
+          src={`${BASE_URL}/${product.photo}`}
           alt={product.name}
           className="h-full w-full object-cover rounded-tr-lg rounded-tl-lg"
         />

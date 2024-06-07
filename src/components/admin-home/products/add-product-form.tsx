@@ -3,15 +3,17 @@ import CloseIcon from "../../../icons/close-icon";
 import { useState, ChangeEvent } from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from 'axios';
+import { BASE_URL } from '../../../types/constants,';
+import PopUp from "../../shared/pop-up";
 
 interface IInsertNewProductForm {
   name: string;
   short_desc: string;
   desc: string;
-  price: number;
+  price: string;
 }
 
-export default function AddProductPopup() {
+export default function AddProductForm() {
 
   const [file, setFile] = useState<string>();
   const [fileScr, setFileScr] = useState<string>('');
@@ -66,14 +68,14 @@ export default function AddProductPopup() {
         name: data.name,
         short_desc: data.short_desc,
         desc: data.desc,
-        price: data.price,
+        price: data.price.replace(',','.'),
         photo: file,
         imageExt: fileExt
       };
 
       console.log(requestData)
 
-      const response = await axios.post('http://localhost:8080/product/create', requestData, {
+      const response = await axios.post(`${BASE_URL}/product/create`, requestData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -88,7 +90,7 @@ export default function AddProductPopup() {
   };
 
   return (
-    <div className="absolute w-screen h-screen bg-black/70 z-30 flex justify-center items-center text-white font-gabarito">
+    <PopUp>
       <div className=" w-[35rem] bg-dark rounded-md flex flex-col justify-between">
         <div className="w-full flex justify-end mt-2 pr-2">
           <button className="w-6 h-6" onClick={handleClosePopUpClick}><CloseIcon /></button>
@@ -103,7 +105,7 @@ export default function AddProductPopup() {
           <label className="text-white font-gabarito pt-5">Descripción larga</label>
           <textarea {...register("desc")} className="w-full h-18 resize-none p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm" />
           <label className="text-white font-gabarito pt-5">Precio del producto</label>
-          <input {...register("price")} type="number" className="w-full p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm" />
+          <input {...register("price")} type="text" className="w-full p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm" />
           <label className="text-white font-gabarito pt-5">Imágen del producto</label>
           <div className="w-full h-60 flex flex-col gap-2">
             <input type="file" className="rounded-md" onChange={handleImageInputChange} />
@@ -112,6 +114,6 @@ export default function AddProductPopup() {
           <button type="submit" className="bg-white text-black mt-5 py-2 font-gabarito-bold rounded-md hover:bg-white/80 transition duration-100">Agregar producto</button>
         </form>
       </div>
-    </div>
+    </PopUp>
   )
 }

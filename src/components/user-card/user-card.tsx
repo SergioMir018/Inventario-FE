@@ -1,24 +1,25 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { fetchUser } from "../../api/user";
-import { useParams } from 'react-router-dom';
+import { useUserId } from '../../hooks/useUserId';
 
 export default function UserCard() {
   const [name, setName] = useState<string>('');
-  const { id } = useParams();
+  const userId = useUserId();
 
   useEffect(() => {
     const getUser = async (id: string) => {
       try {
-        const formatedId = id.split('=')[1]
-        const userData = await fetchUser(formatedId);
+        const userData = await fetchUser(id);
         setName(userData.name);
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
-    getUser(id as string);
-  }, [id])
+    if (userId) {
+      getUser(userId);
+    }
+  }, [userId]);
 
   return (
     <div className="flex">
@@ -26,5 +27,5 @@ export default function UserCard() {
         {name}
       </h4>
     </div>
-  )
+  );
 }
