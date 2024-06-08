@@ -40,6 +40,10 @@ const router = createHashRouter(
             {
               path: 'addProduct',
               element: <Products />
+            },
+            {
+              path: ':productId',
+              element: <Products />
             }
           ]
         },
