@@ -8,6 +8,7 @@ import { CartContext } from '../../../context/cart-context';
 import { useUserId } from '../../../hooks/useUserId';
 import axios from 'axios';
 import { BASE_URL } from '../../../types/constants,';
+import { OrderProduct } from '../../../types/http-types';
 
 interface ICheckoutForm {
   city: string;
@@ -29,7 +30,7 @@ export default function Checkout() {
 
   const confirmCheckoutAction: SubmitHandler<ICheckoutForm> = async (data: ICheckoutForm) => {
     if (cartContext) {
-      const cartContent = cartContext.cart.map(item => {
+      const cartContent: OrderProduct[] = cartContext.cart.map(item => {
         return {
           product_id: item.itemId,
           quantity: item.quantity

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Filters from "./filters";
 import ShopProductsItem from "./shop-product-item";
-import { fetchProducts } from "../../../api/products";
+import { fetchProducts } from "../../../api/admin";
 import { Product } from "../../../types/http-types";
 
 export default function Shop() {

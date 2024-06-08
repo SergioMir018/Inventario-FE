@@ -1,7 +1,7 @@
 import ProductsItem from "./products-item";
 import { useEffect, useState } from 'react';
 import { Product } from '../../../types/http-types';
-import { fetchProducts } from '../../../api/products';
+import { fetchProducts } from '../../../api/admin';
 
 export default function ProductsSection() {
   const [products, setProducts] = useState<Product[]>([]);

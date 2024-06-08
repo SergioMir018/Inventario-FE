@@ -2,7 +2,7 @@ import FormButton from "./form-button";
 import { useForm, SubmitHandler } from "react-hook-form"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { HTTPLoginResponse } from "../../types/http-types";
+import { HTTPLogin } from "../../types/http-types";
 import { BASE_URL } from "../../types/constants,";
 
 interface ILoginForm {
@@ -28,7 +28,7 @@ export default function LoginForm() {
         }
       });
 
-      const {id, role}: HTTPLoginResponse = response.data;
+      const {id, role}: HTTPLogin = response.data;
 
       if (role === 'client') {
         navigate(`/id=${id}/client/shop`);
