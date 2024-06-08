@@ -1,6 +1,6 @@
 // api.js
 import axios from 'axios';
-import { Order, Product } from '../types/http-types';
+import { HTTPOrderResponse, Order, Product } from '../types/http-types';
 import { BASE_URL } from '../types/constants,';
 
 export const fetchProducts = async (): Promise<Product[]> => {
@@ -27,7 +27,7 @@ export const fetchProductById = async (id: string): Promise<Product> => {
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error fetching product:', error);
     throw error;
   }
 };
@@ -39,6 +39,24 @@ export const fetchOrders = async (): Promise<Order[]> => {
     return response.data;
   } catch (error) {
     console.error('Error fetching products:', error);
+    throw error;
+  }
+};
+
+export const fetchOrderById = async (id: string): Promise<HTTPOrderResponse> => {
+  try {
+    const response = await axios.get(`${BASE_URL}/order/searchId`, {
+      params: {
+        id: id,
+      },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching order:', error);
     throw error;
   }
 };

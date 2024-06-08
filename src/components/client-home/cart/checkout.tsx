@@ -33,7 +33,7 @@ export default function Checkout() {
     if (cartContext) {
       const cartContent: OrderProduct[] = cartContext.cart.map((item) => {
         return {
-          product_id: item.itemId,
+          productId: item.itemId,
           quantity: item.quantity,
         };
       });

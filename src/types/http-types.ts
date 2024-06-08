@@ -33,8 +33,21 @@ export type Order = {
   products: OrderProduct[];
 };
 
+export type HTTPOrderResponse = {
+  orderId: string;
+  clientId: string;
+  creationDate: string;
+  name: string;
+  billingAddress: string;
+  phoneNumber: string;
+  products: OrderProduct[];
+  shippingAddress: string;
+  status: string;
+  totalPayment: number;
+};
+
 export type OrderProduct = {
-  product_id: string;
+  productId: string;
   quantity: number;
 };
 

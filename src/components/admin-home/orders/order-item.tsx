@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import OrderStateDropDown from './order-state-dropdown';
 import { Order } from '../../../types/http-types';
 import { fetchUser } from '../../../api/user';
+import { useNavigate } from 'react-router-dom';
 
 interface OrderItemProps {
   order: Order;
@@ -10,6 +11,7 @@ interface OrderItemProps {
 export default function OrderItem({ order }: OrderItemProps) {
   const [orderState, setOrderState] = useState('Estado de la orden...');
   const [clientName, setClientName] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getClientName = async (id: string) => {
@@ -23,6 +25,10 @@ export default function OrderItem({ order }: OrderItemProps) {
 
     getClientName(order.clientId);
   }, [order.clientId]);
+
+  const orderDetailsAction = () => {
+    navigate(`details/orderId=${order.orderId}/clientId=${order.clientId}`);
+  };
 
   return (
     <div className='w-full h-60 flex justify-between bg-dark rounded-lg hover:drop-shadow-sm hover:drop-shadow-neon transition duration-100'>
@@ -53,7 +59,10 @@ export default function OrderItem({ order }: OrderItemProps) {
           </p>
         </div>
         <div className='w-full mt-5 flex gap-5 justify-end relative'>
-          <button className='py-1 px-5 text-white font-gabarito-bold rounded-md border-2 border-dark hover:border-white transition duration-100 absolute left-0 bottom-0'>
+          <button
+            onClick={orderDetailsAction}
+            className='py-1 px-5 text-white font-gabarito-bold rounded-md border-2 border-dark hover:border-white transition duration-100 absolute left-0 bottom-0'
+          >
             Detalles
           </button>
           <div className='flex flex-col gap-1 w-[50%]'>
