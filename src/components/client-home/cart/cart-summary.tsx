@@ -23,7 +23,12 @@ export default function CartSummary() {
         <h3 className='font-gabarito-medium text-xl'>Total</h3>
         <p className='font-gabarito-bold text-4xl'>${total.toFixed(2)}</p>
       </div>
-      <button onClick={checkoutAction} className='bg-white text-black h-14 w-48 mt-auto text-xl font-gabarito-medium rounded-md hover:bg-white/80 transition duration-100'>Checkout</button>
+      <button
+        onClick={checkoutAction}
+        className='bg-white text-black h-14 w-48 mt-auto text-xl font-gabarito-medium rounded-md hover:bg-white/80 transition duration-100'
+      >
+        Checkout
+      </button>
     </div>
   );
 }

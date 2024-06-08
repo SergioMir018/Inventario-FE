@@ -8,6 +8,7 @@ import { CartContext } from '../../../context/cart-context';
 import { useUserId } from '../../../hooks/useUserId';
 import axios from 'axios';
 import { BASE_URL } from '../../../types/constants,';
+import { OrderProduct } from '../../../types/http-types';
 
 interface ICheckoutForm {
   city: string;
@@ -18,23 +19,24 @@ interface ICheckoutForm {
 }
 
 export default function Checkout() {
-  
   const navigate = useNavigate();
 
   const userId = useUserId();
 
   const cartContext = useContext(CartContext);
 
-  const {register, handleSubmit} = useForm<ICheckoutForm>();
+  const { register, handleSubmit } = useForm<ICheckoutForm>();
 
-  const confirmCheckoutAction: SubmitHandler<ICheckoutForm> = async (data: ICheckoutForm) => {
+  const confirmCheckoutAction: SubmitHandler<ICheckoutForm> = async (
+    data: ICheckoutForm
+  ) => {
     if (cartContext) {
-      const cartContent = cartContext.cart.map(item => {
+      const cartContent: OrderProduct[] = cartContext.cart.map((item) => {
         return {
           product_id: item.itemId,
-          quantity: item.quantity
-        }
-      })
+          quantity: item.quantity,
+        };
+      });
 
       const shippingAddres = `${data.city}, ${data.municipality}, ${data.partAdress}`;
       const creationDate = new Date().toISOString().split('T')[0];
@@ -46,17 +48,21 @@ export default function Checkout() {
         details: {
           shippingAddress: shippingAddres,
           billingAddress: data.card,
-          phoneNumber: data.phone
+          phoneNumber: data.phone,
         },
-        products: cartContent
-      }
+        products: cartContent,
+      };
 
       try {
-        const response = await axios.post(`${BASE_URL}/order/create`, requestData, {
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await axios.post(
+          `${BASE_URL}/order/create`,
+          requestData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
           }
-        })
+        );
 
         console.log('Orden creada con exito:', response.data);
         navigate('cart');
@@ -64,8 +70,8 @@ export default function Checkout() {
         console.error('Error al crear la orden:', error);
       }
     }
-  }
-  
+  };
+
   const handleClosePopUpClick = () => {
     navigate('cart');
   };
@@ -81,7 +87,10 @@ export default function Checkout() {
             <CloseIcon />
           </button>
         </div>
-        <form onSubmit={handleSubmit(confirmCheckoutAction)} className='w-full h-[95%] px-5 pb-5 flex flex-col'>
+        <form
+          onSubmit={handleSubmit(confirmCheckoutAction)}
+          className='w-full h-[95%] px-5 pb-5 flex flex-col'
+        >
           <h1 className='text-2xl font-gabarito-bold'>Completa el checkout</h1>
           <p className='text-white/60'>
             Agrega tu información de envio y método de pago
@@ -89,7 +98,7 @@ export default function Checkout() {
           <Divider text='Envío' />
           <label className='text-white font-gabarito'>Ciudad</label>
           <input
-          {...register('city')}
+            {...register('city')}
             type='text'
             className='w-full p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm'
           />

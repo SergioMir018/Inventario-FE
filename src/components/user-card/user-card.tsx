@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { fetchUser } from "../../api/user";
+import { useEffect, useState } from 'react';
+import { fetchUser } from '../../api/user';
 import { useUserId } from '../../hooks/useUserId';
 
 export default function UserCard() {
@@ -22,10 +22,8 @@ export default function UserCard() {
   }, [userId]);
 
   return (
-    <div className="flex">
-      <h4 className="ml-6 font-gabarito-medium text-3xl">
-        {name}
-      </h4>
+    <div className='flex'>
+      <h4 className='ml-6 font-gabarito-medium text-3xl'>{name}</h4>
     </div>
   );
 }

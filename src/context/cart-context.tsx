@@ -11,7 +11,9 @@ interface CartContextType {
   calculateTotal: () => number;
 }
 
-export const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined
+);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItemProduct[]>([]);
@@ -32,31 +34,45 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (id: string) => {
-    setCart((prevCart) => prevCart.filter(cartItem => cartItem.itemId !== id));
+    setCart((prevCart) =>
+      prevCart.filter((cartItem) => cartItem.itemId !== id)
+    );
   };
 
   const incrementQuantity = (id: string) => {
-    setCart(prevCart =>
-      prevCart.map(item =>
+    setCart((prevCart) =>
+      prevCart.map((item) =>
         item.itemId === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
 
   const decrementQuantity = (id: string) => {
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.itemId === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.itemId === id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
       )
     );
   };
 
   const calculateTotal = () => {
-    return cart.reduce((acc, item) => acc + (item.itemPrice * item.quantity), 0);
+    return cart.reduce((acc, item) => acc + item.itemPrice * item.quantity, 0);
   };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, incrementQuantity, decrementQuantity, calculateTotal }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        removeFromCart,
+        incrementQuantity,
+        decrementQuantity,
+        calculateTotal,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
