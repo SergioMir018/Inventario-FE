@@ -32,7 +32,11 @@ export default function ProductsItem({ product }: ProductItemProps) {
   };
 
   const handleDetailButtonAction = () => {
-    navigate(`productId=${product.id}`);
+    navigate(`details/productId=${product.id}`);
+  };
+
+  const handleEditButtonAction = () => {
+    navigate(`edit/productId=${product.id}`);
   };
 
   return (
@@ -52,7 +56,10 @@ export default function ProductsItem({ product }: ProductItemProps) {
           {product.short_desc}
         </p>
         <div className='w-72 ml-5 mt-4 flex justify-between'>
-          <button className='py-1 px-5 mb-3 text-white font-gabarito-bold rounded-md hover:bg-white hover:text-black transition duration-100'>
+          <button
+            onClick={handleEditButtonAction}
+            className='py-1 px-5 mb-3 text-white font-gabarito-bold rounded-md hover:bg-white hover:text-black transition duration-100'
+          >
             Editar
           </button>
           <button

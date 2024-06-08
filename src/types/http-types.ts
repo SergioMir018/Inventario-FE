@@ -29,14 +29,14 @@ export type Order = {
     shippingAddress: string;
     billingAddress: string;
     phoneNumber: string;
-  }
+  };
   products: OrderProduct[];
 };
 
 export type OrderProduct = {
   product_id: string;
   quantity: number;
-}
+};
 
 export type User = {
   name: string;

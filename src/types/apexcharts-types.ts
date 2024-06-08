@@ -1,5 +1,10 @@
-export type positionType = 'left' | 'right' | 'bottom' | 'top' | undefined
+export type positionType = 'left' | 'right' | 'bottom' | 'top' | undefined;
 
-export type curveType = 'straight' | 'smooth' | 'stepline' | 'monotoneCubic' | undefined
+export type curveType =
+  | 'straight'
+  | 'smooth'
+  | 'stepline'
+  | 'monotoneCubic'
+  | undefined;
 
-export type alignType = 'center' | 'left' | 'right' | undefined
+export type alignType = 'center' | 'left' | 'right' | undefined;

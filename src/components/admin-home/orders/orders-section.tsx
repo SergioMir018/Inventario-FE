@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
-import OrderItem from './order-item'
+import { useEffect, useState } from 'react';
+import OrderItem from './order-item';
 import { fetchOrders } from '../../../api/admin';
 import { Order } from '../../../types/http-types';
 
 export default function OrdersSection() {
-
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
@@ -22,9 +21,9 @@ export default function OrdersSection() {
 
   return (
     <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-5'>
-      {orders.map(order => (
+      {orders.map((order) => (
         <OrderItem order={order} />
       ))}
     </section>
-  )
+  );
 }

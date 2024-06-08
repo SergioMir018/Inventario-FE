@@ -10,8 +10,7 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ id }: ProductDetailsProps) {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState<Product>();
 
@@ -27,8 +26,8 @@ export default function ProductDetails({ id }: ProductDetailsProps) {
   }, [id]);
 
   const handleAcceptAction = () => {
-    navigate('products')
-  }
+    navigate('products');
+  };
 
   return (
     <PopUp>

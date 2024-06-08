@@ -151,6 +151,7 @@ export default function AddProductForm() {
           <div className='w-full h-60 flex flex-col gap-2'>
             <input
               type='file'
+              accept='image/*'
               className='rounded-md'
               onChange={handleImageInputChange}
             />
