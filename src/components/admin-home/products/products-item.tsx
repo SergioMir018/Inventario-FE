@@ -48,10 +48,10 @@ export default function ProductsItem({ product }: ProductItemProps) {
         <p className='text-white ml-5 text-2xl font-gabarito-medium pt-5'>
           {product.name}
         </p>
-        <p className='text-white/50 mx-5 text-sm font-gabarito pt-5'>
+        <p className='text-white/50 mx-5 font-gabarito pt-5'>
           {product.short_desc}
         </p>
-        <div className='w-72 ml-5 mt-5 flex justify-between'>
+        <div className='w-72 ml-5 mt-4 flex justify-between'>
           <button className='py-1 px-5 mb-3 text-white font-gabarito-bold rounded-md hover:bg-white hover:text-black transition duration-100'>
             Editar
           </button>

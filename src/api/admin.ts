@@ -14,6 +14,24 @@ export const fetchProducts = async (): Promise<Product[]> => {
   }
 };
 
+export const fetchProductById = async (id: string): Promise<Product> => {
+  try {
+    const response = await axios.get(`${BASE_URL}/product/searchId`, {
+      params: {
+        id: id,
+      },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    throw error;
+  }
+};
+
 export const fetchOrders = async (): Promise<Order[]> => {
   try {
     const response = await axios.get(`${BASE_URL}/order/all`);

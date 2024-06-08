@@ -5,8 +5,11 @@ import UserOpts from "../components/shared/user-opts";
 import { Outlet, useLocation } from "react-router-dom";
 import AddProductForm from '../components/admin-home/products/add-product-form';
 import ProductDetails from "../components/admin-home/products/product-details";
+import { useProductId } from "../hooks/useProductId";
 
 export default function AdminHome() {
+
+  const productParamsId = useProductId();
 
   const location = useLocation();
 
@@ -16,7 +19,7 @@ export default function AdminHome() {
   return (
     <section className="flex min-w-screen min-h-screen">
       {isAddProductRoute && <AddProductForm />}
-      {isProductDetailRoute && <ProductDetails />}
+      {isProductDetailRoute && <ProductDetails id={productParamsId} />}
       <header className="flex flex-col gap-1 pl-10 pt-5 my-[3rem] min-w-[15rem]
         border-r-2 border-white/10">
         <HeaderHeadline />
