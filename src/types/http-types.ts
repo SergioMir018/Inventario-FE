@@ -1,35 +1,57 @@
-export interface GitHubUser {
-  login: string;
-  id: number;
-  node_id: string;
-  avatar_url: string;
-  gravatar_id?: string | null;
-  url: string;
-  html_url: string;
-  followers_url: string;
-  following_url: string;
-  gists_url: string;
-  starred_url: string;
-  subscriptions_url: string;
-  organizations_url: string;
-  repos_url: string;
-  events_url: string;
-  received_events_url: string;
-  type: string;
-  site_admin: boolean;
-  name?: string | null;
-  company?: string | null;
-  blog?: string | null;
-  location?: string | null;
-  email?: string | null;
-  hireable?: boolean | null;
-  bio?: string | null;
-  twitter_username?: string | null;
-  public_repos: number;
-  public_gists: number;
-  followers: number;
-  following: number;
-  created_at: string;
-  updated_at: string;
-}
+export type HTTPGetUser = {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+};
 
+export type HTTPLogin = {
+  id: string;
+  role: string;
+};
+
+export type Product = {
+  id: string;
+  name: string;
+  short_desc: string;
+  desc: string;
+  photo: string;
+  price: number;
+};
+
+export type Order = {
+  orderId: string;
+  clientId: string;
+  name: string;
+  creationDate: string;
+  totalPayment: number;
+  details: {
+    shippingAddress: string;
+    billingAddress: string;
+    phoneNumber: string;
+  };
+  products: OrderProduct[];
+};
+
+export type HTTPOrderResponse = {
+  orderId: string;
+  clientId: string;
+  creationDate: string;
+  name: string;
+  billingAddress: string;
+  phoneNumber: string;
+  products: OrderProduct[];
+  shippingAddress: string;
+  status: string;
+  totalPayment: number;
+};
+
+export type OrderProduct = {
+  productId: string;
+  quantity: number;
+};
+
+export type User = {
+  name: string;
+  email: string;
+};
