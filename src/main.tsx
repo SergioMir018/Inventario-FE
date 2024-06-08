@@ -54,6 +54,12 @@ const router = createHashRouter([
       {
         path: 'orders',
         element: <Orders />,
+        children: [
+          {
+            path: 'details/:orderId/:clientId',
+            element: <Orders />,
+          },
+        ],
       },
     ],
   },
