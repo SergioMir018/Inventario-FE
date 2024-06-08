@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import axios from 'axios';
 import { BASE_URL } from '../../../types/constants,';
 import PopUp from '../../shared/pop-up';
+import arrayBufferToBase64 from '../../../utils/arrayBufferToBase64';
 
 interface IInsertNewProductForm {
   name: string;
@@ -41,20 +42,6 @@ export default function AddProductForm() {
         console.log(base64Image);
       };
     }
-  }
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  function arrayBufferToBase64(buffer) {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-
-    return btoa(binary);
   }
 
   const handleClosePopUpClick = () => {
