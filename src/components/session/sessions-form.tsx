@@ -15,7 +15,7 @@ export default function Form() {
 
   const handleGuestButtonClick = () => {
     const id = 'guest';
-    navigate(`/id=${id}/client/home/shop`);
+    navigate(`/id=${id}/client/home/shop`, { replace: true });
   };
 
   return (
