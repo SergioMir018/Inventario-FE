@@ -14,7 +14,7 @@ export default function ClientHome() {
 
   const cartContext = useContext(CartContext);
 
-  cartContext?.setCanShop(id !== 'gest');
+  cartContext?.setCanShop(id !== 'guest');
 
   const isCheckoutRoute = location.pathname.includes('/checkout');
 

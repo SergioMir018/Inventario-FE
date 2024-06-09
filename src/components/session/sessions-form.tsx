@@ -13,8 +13,8 @@ export default function Form() {
     setClickedIndex(index);
   };
 
-  const handleGestButtonClick = () => {
-    const id = 'gest';
+  const handleGuestButtonClick = () => {
+    const id = 'guest';
     navigate(`/id=${id}/client/home/shop`);
   };
 
@@ -53,7 +53,7 @@ export default function Form() {
           </p>
           <FormButton
             text='Continua como Invitado'
-            action={handleGestButtonClick}
+            action={handleGuestButtonClick}
           />
         </div>
       )}
