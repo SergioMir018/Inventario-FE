@@ -1,14 +1,19 @@
 import { Product } from '../../../types/http-types';
 import { BASE_URL } from '../../../types/constants,';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface ProductItemProps {
   product: Product;
 }
 
 export default function ProductsItem({ product }: ProductItemProps) {
+
   const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const isAdmin = location.pathname.includes('admin');
 
   const handleDeleteButtonAction = async () => {
     try {
@@ -56,18 +61,22 @@ export default function ProductsItem({ product }: ProductItemProps) {
           {product.short_desc}
         </p>
         <div className='w-72 ml-5 mt-4 flex justify-between'>
-          <button
-            onClick={handleEditButtonAction}
-            className='py-1 px-5 mb-3 text-white font-gabarito-bold rounded-md hover:bg-white hover:text-black transition duration-100'
-          >
-            Editar
-          </button>
-          <button
-            onClick={handleDeleteButtonAction}
-            className='py-1 px-5 mb-3 text-white font-gabarito-bold border-2 border-dark rounded-md hover:border-2 hover:border-white hover:text-red transition duration-100'
-          >
-            Eliminar
-          </button>
+          {isAdmin && (
+            <button
+              onClick={handleEditButtonAction}
+              className='py-1 px-5 mb-3 text-white font-gabarito-bold rounded-md hover:bg-white hover:text-black transition duration-100'
+            >
+              Editar
+            </button>
+          )}
+          {isAdmin && (
+            <button
+              onClick={handleDeleteButtonAction}
+              className='py-1 px-5 mb-3 text-white font-gabarito-bold border-2 border-dark rounded-md hover:border-2 hover:border-white hover:text-red transition duration-100'
+            >
+              Eliminar
+            </button>
+          )}
           <button
             onClick={handleDetailButtonAction}
             className='py-1 px-5 mb-3 text-white font-gabarito-bold border-2 border-dark rounded-md hover:border-2 hover:border-white transition duration-100'

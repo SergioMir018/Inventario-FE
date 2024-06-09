@@ -1,10 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import ChartIcon from '../../icons/chart-icon';
 import OrderIcon from '../../icons/order-icon';
 import ShoppingBagIcon from '../../icons/shopping-bag-icon';
 import classNames from 'classnames';
 
 export default function AdminMenu() {
+
+  const location = useLocation();
+
+  const isAdmin = location.pathname.includes('admin');
+
   return (
     <section
       className='flex flex-col border-t-2 border-b-2 border-white/10
@@ -14,20 +19,25 @@ export default function AdminMenu() {
         className='flex flex-col gap-2 font-gabarito-medium text-lg 
         text-white w-full pr-4'
       >
-        <li>
-          <NavLink
-            to={'overview'}
-            className={({ isActive }) =>
-              classNames('flex flex-row items-center w-full py-2 rounded-lg', {
-                'bg-white text-black': isActive,
-                'hover:bg-white/80 hover:text-black transition duration-100':
-                  !isActive,
-              })
-            }
-          >
-            <ChartIcon /> Descripción general
-          </NavLink>
-        </li>
+        {isAdmin && (
+          <li>
+            <NavLink
+              to={'overview'}
+              className={({ isActive }) =>
+                classNames(
+                  'flex flex-row items-center w-full py-2 rounded-lg',
+                  {
+                    'bg-white text-black': isActive,
+                    'hover:bg-white/80 hover:text-black transition duration-100':
+                      !isActive,
+                  }
+                )
+              }
+            >
+              <ChartIcon /> Descripción general
+            </NavLink>
+          </li>
+        )}
         <li>
           <NavLink
             to={'products'}
