@@ -3,13 +3,15 @@ import OrderStateDropDown from './order-state-dropdown';
 import { Order } from '../../../types/http-types';
 import { fetchUser } from '../../../api/user';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { BASE_URL } from '../../../types/constants,';
 
 interface OrderItemProps {
   order: Order;
 }
 
 export default function OrderItem({ order }: OrderItemProps) {
-  const [orderState, setOrderState] = useState('Estado de la orden...');
+  const [orderState, setOrderState] = useState(order.status);
   const [clientName, setClientName] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -25,6 +27,24 @@ export default function OrderItem({ order }: OrderItemProps) {
 
     getClientName(order.clientId);
   }, [order.clientId]);
+
+  useEffect(() => {
+      const changeOrderStatus = async (id: string) => {
+        const response = await axios.put(`${BASE_URL}/order/updateStatus`, null, {
+          params: {
+            id: id,
+            newStatus: orderState,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        console.log('Producto actualizado con éxito:', response.data);
+      };
+
+      changeOrderStatus(order.orderId)
+  }, [order.orderId, orderState])
 
   const orderDetailsAction = () => {
     navigate(`details/orderId=${order.orderId}/clientId=${order.clientId}`);

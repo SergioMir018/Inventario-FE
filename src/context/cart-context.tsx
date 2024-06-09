@@ -3,7 +3,9 @@ import { CartItemProduct } from '../types/shop';
 
 interface CartContextType {
   cart: CartItemProduct[];
+  canShop: boolean;
   setCart: React.Dispatch<React.SetStateAction<CartItemProduct[]>>;
+  setCanShop: React.Dispatch<React.SetStateAction<boolean>>;
   addToCart: (item: CartItemProduct) => void;
   removeFromCart: (id: string) => void;
   incrementQuantity: (id: string) => void;
@@ -17,17 +19,21 @@ export const CartContext = createContext<CartContextType | undefined>(
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItemProduct[]>([]);
+  const [canShop, setCanShop] = useState<boolean>(false);
 
   useEffect(() => {
     const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
+    const storedCanShop = localStorage.getItem('canShop');
+    if (storedCart && storedCanShop) {
       setCart(JSON.parse(storedCart));
+      setCanShop(JSON.parse(storedCanShop) === true);
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+    localStorage.setItem('canShop', JSON.stringify(canShop));
+  }, [canShop, cart]);
 
   const addToCart = (item: CartItemProduct) => {
     setCart((prevCart) => [...prevCart, item]);
@@ -65,7 +71,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     <CartContext.Provider
       value={{
         cart,
+        canShop,
         setCart,
+        setCanShop,
         addToCart,
         removeFromCart,
         incrementQuantity,

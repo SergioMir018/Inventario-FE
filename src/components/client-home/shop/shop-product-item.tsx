@@ -10,22 +10,25 @@ interface ShopProductsItemProps {
 
 export default function ShopProductsItem({ product }: ShopProductsItemProps) {
   const cartContext = useContext(CartContext);
-
   const isProductInCart = cartContext?.cart.some(
     (item) => item.itemId === product.id
   );
 
   const handleAddToCart = () => {
-    if (cartContext && !isProductInCart) {
-      const newItem: CartItemProduct = {
-        itemId: product.id,
-        itemImageUrl: `${BASE_URL}/${product.photo}`,
-        itemName: product.name,
-        itemPrice: product.price,
-        quantity: 1,
-      };
+    if (cartContext?.canShop) {
+      if (cartContext && !isProductInCart) {
+        const newItem: CartItemProduct = {
+          itemId: product.id,
+          itemImageUrl: `${BASE_URL}/${product.photo}`,
+          itemName: product.name,
+          itemPrice: product.price,
+          quantity: 1,
+        };
 
-      cartContext.addToCart(newItem);
+        cartContext.addToCart(newItem);
+      }
+    } else {
+      alert('Eres un invitado');
     }
   };
 

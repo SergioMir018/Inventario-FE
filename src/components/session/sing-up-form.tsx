@@ -36,7 +36,7 @@ export default function SingUpForm() {
 
       const id = response.data;
 
-      navigate(`/id=${id}/client`);
+      navigate(`/id=${id}/client/home/shop`);
     } catch (error) {
       console.error('Sing Up error:', error);
     }

@@ -25,59 +25,69 @@ const router = createHashRouter([
     index: true,
   },
   {
-    path: '/:id/:role',
-    element: <AdminHome />,
+    path: '/:id',
     children: [
       {
-        path: 'overview',
-        element: <GeneralOverview />,
-      },
-      {
-        path: 'products',
-        element: <Products />,
+        path: ':role',
+        element: <AdminHome />,
+        children: [
+          {
+            path: 'overview',
+            element: <GeneralOverview />,
+          },
+          {
+            path: 'products',
+            element: <Products />,
 
-        children: [
-          {
-            path: 'addProduct',
-            element: <Products />,
+            children: [
+              {
+                path: 'addProduct',
+                element: <Products />,
+              },
+              {
+                path: 'details/:productId',
+                element: <Products />,
+              },
+              {
+                path: 'edit/:productId',
+                element: <Products />,
+              },
+            ],
           },
           {
-            path: 'details/:productId',
-            element: <Products />,
-          },
-          {
-            path: 'edit/:productId',
-            element: <Products />,
-          },
-        ],
-      },
-      {
-        path: 'orders',
-        element: <Orders />,
-        children: [
-          {
-            path: 'details/:orderId/:clientId',
+            path: 'orders',
             element: <Orders />,
+            children: [
+              {
+                path: 'details/:orderId/:clientId',
+                element: <Orders />,
+              },
+            ],
           },
         ],
       },
-    ],
-  },
-  {
-    path: '/:id/client',
-    element: <ClientHome />,
-    children: [
       {
-        path: 'shop',
-        element: <Shop />,
-      },
-      {
-        path: 'cart',
-        element: <Cart />,
+        path: 'client',
         children: [
           {
-            path: 'checkout',
-            element: <Cart />,
+            path: 'home',
+            element: <ClientHome />,
+            children: [
+              {
+                path: 'shop',
+                element: <Shop />,
+              },
+              {
+                path: 'cart',
+                element: <Cart />,
+                children: [
+                  {
+                    path: 'checkout',
+                    element: <Cart />,
+                  },
+                ],
+              },
+            ],
           },
         ],
       },

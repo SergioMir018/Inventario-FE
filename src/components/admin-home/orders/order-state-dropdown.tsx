@@ -82,10 +82,10 @@ export default function OrderStateDropDown({
           >
             <li>
               <div
-                onClick={() => handleDropdownClick('En espera')}
+                onClick={() => handleDropdownClick('Pendiente')}
                 className='block px-4 py-2 hover:bg-gray-500/30 dark:hover:bg-black/30 dark:hover:text-white cursor-pointer'
               >
-                En espera
+                Pendiente
               </div>
             </li>
             <li>

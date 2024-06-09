@@ -32,7 +32,7 @@ export default function LoginForm() {
       const { id, role }: HTTPLogin = response.data;
 
       if (role === 'client') {
-        navigate(`/id=${id}/client/shop`);
+        navigate(`/id=${id}/client/home/shop`);
       } else {
         navigate(`/id=${id}/${role}`);
       }

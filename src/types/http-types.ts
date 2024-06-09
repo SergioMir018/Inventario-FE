@@ -21,6 +21,7 @@ export type Product = {
 
 export type Order = {
   orderId: string;
+  status: string;
   clientId: string;
   name: string;
   creationDate: string;
