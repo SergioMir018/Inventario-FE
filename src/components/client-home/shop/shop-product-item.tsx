@@ -3,6 +3,7 @@ import { Product } from '../../../types/http-types';
 import { CartContext } from '../../../context/cart-context';
 import { CartItemProduct } from '../../../types/shop';
 import { BASE_URL } from '../../../types/constants,';
+import { useNavigate } from 'react-router-dom';
 
 interface ShopProductsItemProps {
   product: Product;
@@ -10,6 +11,9 @@ interface ShopProductsItemProps {
 
 export default function ShopProductsItem({ product }: ShopProductsItemProps) {
   const cartContext = useContext(CartContext);
+
+  const navigate = useNavigate();
+
   const isProductInCart = cartContext?.cart.some(
     (item) => item.itemId === product.id
   );
@@ -28,7 +32,7 @@ export default function ShopProductsItem({ product }: ShopProductsItemProps) {
         cartContext.addToCart(newItem);
       }
     } else {
-      alert('Eres un invitado');
+      navigate('singUpRequest')
     }
   };
 

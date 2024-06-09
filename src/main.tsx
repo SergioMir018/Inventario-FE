@@ -76,6 +76,12 @@ const router = createHashRouter([
               {
                 path: 'shop',
                 element: <Shop />,
+                children: [
+                  {
+                    path: 'singUpRequest',
+                    element: <Shop />,
+                  },
+                ],
               },
               {
                 path: 'cart',

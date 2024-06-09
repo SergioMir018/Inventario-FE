@@ -32,9 +32,9 @@ export default function LoginForm() {
       const { id, role }: HTTPLogin = response.data;
 
       if (role === 'client') {
-        navigate(`/id=${id}/client/home/shop`);
+        navigate(`/id=${id}/client/home/shop`, { replace: true });
       } else {
-        navigate(`/id=${id}/${role}`);
+        navigate(`/id=${id}/${role}`, { replace: true });
       }
     } catch (error) {
       console.error('Login error:', error);
