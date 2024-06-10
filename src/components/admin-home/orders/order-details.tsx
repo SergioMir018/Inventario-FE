@@ -5,6 +5,7 @@ import { fetchUser } from '../../../api/user';
 import OrderDetailsTableItem from './order-details-table-item';
 import { HTTPOrderResponse } from '../../../types/http-types';
 import { fetchOrderById } from '../../../api/admin';
+import Badge from '../../shared/badge';
 
 interface OrderDetailProps {
   orderId: string;
@@ -48,7 +49,10 @@ export default function OrderDetails({ orderId, clientId }: OrderDetailProps) {
       <div className='bg-dark rounded-md grid gap-8 max-w-4xl mx-auto py-8 px-8 md:px-5'>
         <div className='flex items-center justify-between'>
           <div>
-            <h1 className='text-2xl font-bold'>{order?.name}</h1>
+            <div className='flex gap-16'>
+              <h1 className='text-2xl font-bold'>{order?.name}</h1>
+              <Badge text={order?.status} />
+            </div>
             <p className='text-gray-500 dark:text-gray-400'>
               Creada en {order?.creationDate}
             </p>
@@ -63,7 +67,7 @@ export default function OrderDetails({ orderId, clientId }: OrderDetailProps) {
             <h2 className='text-lg font-bold mb-2'>Información de envío</h2>
             <div className='space-y-1'>
               <p>{clientName}</p>
-              <p>{order?.shippingAddress}</p>
+              <p className='w-80'>{order?.shippingAddress}</p>
               <p>{order?.phoneNumber}</p>
             </div>
           </div>
