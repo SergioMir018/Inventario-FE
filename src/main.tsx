@@ -12,6 +12,7 @@ import ClientHome from './pages/client-home';
 import Shop from './components/client-home/shop/shop';
 import Cart from './components/client-home/cart/cart';
 import { CartProvider } from './context/cart-context';
+import { NextUIProvider } from '@nextui-org/react';
 
 const router = createHashRouter([
   {
@@ -106,7 +107,9 @@ const router = createHashRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <CartProvider>
-    <RouterProvider router={router} />
-  </CartProvider>
+  <NextUIProvider>
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  </NextUIProvider>
 );

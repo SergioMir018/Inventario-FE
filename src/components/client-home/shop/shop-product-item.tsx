@@ -4,6 +4,7 @@ import { CartContext } from '../../../context/cart-context';
 import { CartItemProduct } from '../../../types/shop';
 import { BASE_URL } from '../../../types/constants,';
 import { useNavigate } from 'react-router-dom';
+import Badge from '../../shared/badge';
 
 interface ShopProductsItemProps {
   product: Product;
@@ -46,8 +47,9 @@ export default function ShopProductsItem({ product }: ShopProductsItemProps) {
         />
       </div>
       <div className='relative'>
-        <p className='text-white ml-5 text-2xl font-gabarito-medium pt-2'>
+        <p className='text-white ml-5 text-2xl font-gabarito-medium pt-2 flex gap-5'>
           {product.name}
+          <Badge text={product.category} />
         </p>
         <p className='text-white/50 mx-5 text-sm font-gabarito pt-2 w-[70%]'>
           {product.short_desc}

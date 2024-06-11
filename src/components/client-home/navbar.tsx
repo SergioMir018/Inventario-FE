@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import UserCard from '../user-card/user-card';
 import classNames from 'classnames';
+import { CartContext } from '../../context/cart-context';
+import { Badge } from '@nextui-org/react';
 
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const cartContext = useContext(CartContext);
 
   const [isShop, setIsShop] = useState(true);
 
@@ -35,12 +38,23 @@ export default function Navbar() {
           >
             Tienda
           </p>
-          <p
-            className='cursor-pointer h-full flex justify-center items-center'
-            onClick={() => handleSectionChange('cart')}
-          >
-            Carrito
-          </p>
+          {cartContext && cartContext?.cart.length > 0 ? (
+            <Badge content={cartContext.cart.length} color='danger'>
+              <p
+                className='cursor-pointer h-full flex justify-center items-center'
+                onClick={() => handleSectionChange('cart')}
+              >
+                Carrito
+              </p>
+            </Badge>
+          ) : (
+            <p
+              className='cursor-pointer h-full flex justify-center items-center'
+              onClick={() => handleSectionChange('cart')}
+            >
+              Carrito
+            </p>
+          )}
         </div>
         <div
           className={classNames(
