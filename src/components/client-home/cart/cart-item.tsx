@@ -12,7 +12,6 @@ export default function CartItem({ cartItem }: CartItemProps) {
 
   const handleCartItemDelete = (id: string) => {
     cartContext?.removeFromCart(id);
-    window.location.reload();
   };
 
   const handleIncrementQuantity = (id: string) => {
@@ -30,7 +29,7 @@ export default function CartItem({ cartItem }: CartItemProps) {
           <img
             src={`${cartItem.itemImageUrl}`}
             alt={cartItem.itemName}
-            className='h-full w-full object-cover rounded-tr-lg rounded-tl-lg'
+            className='h-full w-full object-cover rounded-tl-lg rounded-bl-lg'
           />
         </div>
         <div className='h-full flex flex-col justify-center ml-5'>
