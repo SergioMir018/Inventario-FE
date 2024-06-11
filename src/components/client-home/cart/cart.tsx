@@ -15,7 +15,9 @@ export default function Cart() {
     }
   }, []);
 
-  const cartToRender = cartContext?.cart.length ? cartContext.cart : localCart;
+  useEffect(() => {}, [cartContext?.cart]);
+
+  const cartToRender = cartContext?.cart ? cartContext.cart : localCart;
 
   return (
     <section className='text-white font-gabarito mx-28 mt-12 h-full mb-auto'>
@@ -34,7 +36,7 @@ export default function Cart() {
           cartItem={cartItem}
         />
       ))}
-      {localCart.length > 0 && <CartSummary />}
+      {cartToRender.length > 0 && <CartSummary />}
     </section>
   );
 }

@@ -21,7 +21,10 @@ export default function ShopProductsItem({ product }: ShopProductsItemProps) {
     (item) => item.itemId === product.id
   );
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+    event.stopPropagation();
+
     if (cartContext?.canShop) {
       if (cartContext && !isProductInCart) {
         const newItem: CartItemProduct = {
