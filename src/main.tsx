@@ -13,6 +13,7 @@ import Shop from './components/client-home/shop/shop';
 import Cart from './components/client-home/cart/cart';
 import { CartProvider } from './context/cart-context';
 import { NextUIProvider } from '@nextui-org/react';
+import ProductDetailsSection from './components/client-home/product/product';
 
 const router = createHashRouter([
   {
@@ -70,6 +71,10 @@ const router = createHashRouter([
       {
         path: 'client',
         children: [
+          {
+            path: 'product/:productId',
+            element: <ProductDetailsSection />,
+          },
           {
             path: 'home',
             element: <ClientHome />,
