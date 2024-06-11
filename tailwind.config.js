@@ -34,7 +34,10 @@ export default {
         "metal": "#3a3a3a",
         "dark": "#1c1c1c",
         "darker": "#151515",
-      }
+      },
+      aspectRatio: {
+        '16/9': [16, 9],
+      },
     },
   },
   darkMode: "class",
