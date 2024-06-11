@@ -1,8 +1,11 @@
+const { nextui } = require("@nextui-org/react");
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -31,10 +34,15 @@ export default {
         "metal": "#3a3a3a",
         "dark": "#1c1c1c",
         "darker": "#151515",
-      }
+      },
+      aspectRatio: {
+        '16/9': [16, 9],
+      },
     },
   },
+  darkMode: "class",
   plugins: [
-    require('tailwindcss-animated')
+    require('tailwindcss-animated'),
+    nextui()
   ],
 }

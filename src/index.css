@@ -24,7 +24,7 @@
 }
 
 @layer base {
-  html {
+  html, body {
     @apply bg-[#151515]
   }
 

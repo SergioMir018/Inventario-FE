@@ -2,6 +2,7 @@ import { Product } from '../../../types/http-types';
 import { BASE_URL } from '../../../types/constants,';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Badge from '../../shared/badge';
 
 interface ProductItemProps {
   product: Product;
@@ -27,7 +28,7 @@ export default function ProductsItem({ product }: ProductItemProps) {
       });
 
       if (response.status === 200) {
-        window.location.reload();
+        console.error('Éxito al eliminar el producto:', response.data);
       } else {
         console.error('Error al eliminar el producto:', response.data);
       }
@@ -54,9 +55,12 @@ export default function ProductsItem({ product }: ProductItemProps) {
         />
       </div>
       <div className='relative'>
-        <p className='text-white ml-5 text-2xl font-gabarito-medium pt-5'>
-          {product.name}
-        </p>
+        <div className='flex justify-between'>
+          <p className='text-white ml-5 text-2xl font-gabarito-medium pt-5'>
+            {product.name}
+          </p>
+          <Badge styles='mt-5 mr-6' text={product.category} />
+        </div>
         <p className='text-white/50 mx-5 font-gabarito pt-5'>
           {product.short_desc}
         </p>
