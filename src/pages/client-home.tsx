@@ -4,17 +4,15 @@ import Checkout from '../components/client-home/cart/checkout';
 import Footer from '../components/client-home/footer';
 import Navbar from '../components/client-home/navbar';
 import { CartContext } from '../context/cart-context';
-import { useUserId } from '../hooks/useUserId';
 import SinUoRequest from '../components/client-home/sing-up-request';
+import { AuthContext } from '../context/auth-context';
 
 export default function ClientHome() {
   const location = useLocation();
-
-  const id = useUserId();
-
   const cartContext = useContext(CartContext);
+  const authContext = useContext(AuthContext);
 
-  cartContext?.setCanShop(id !== 'guest');
+  cartContext?.setCanShop(authContext?.role !== 'guest');
 
   const isCheckoutRoute = location.pathname.includes('checkout');
   const isSingUpRequestRoute = location.pathname.includes('singUpRequest');

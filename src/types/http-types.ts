@@ -20,6 +20,10 @@ export type Product = {
   category: string;
 };
 
+export type Category = {
+  name: string;
+}
+
 export type Order = {
   orderId: string;
   status: string;

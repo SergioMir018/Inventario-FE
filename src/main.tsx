@@ -14,6 +14,7 @@ import Cart from './components/client-home/cart/cart';
 import { CartProvider } from './context/cart-context';
 import { NextUIProvider } from '@nextui-org/react';
 import ProductDetailsSection from './components/client-home/product/product';
+import { AuthProvider } from './context/auth-context';
 
 const router = createHashRouter([
   {
@@ -113,8 +114,10 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <NextUIProvider>
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </AuthProvider>
   </NextUIProvider>
 );

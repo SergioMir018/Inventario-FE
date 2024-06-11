@@ -1,14 +1,15 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ChartIcon from '../../icons/chart-icon';
 import OrderIcon from '../../icons/order-icon';
 import ShoppingBagIcon from '../../icons/shopping-bag-icon';
 import classNames from 'classnames';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth-context';
 
 export default function AdminMenu() {
+  const authContext = useContext(AuthContext);
 
-  const location = useLocation();
-
-  const isAdmin = location.pathname.includes('admin');
+  const isAdmin = authContext?.isAdmin
 
   return (
     <section

@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import LoginForm from './login-form';
 import SectionButton from './section-button';
 import SingUpForm from './sing-up-form';
 import { useNavigate } from 'react-router-dom';
 import FormButton from './form-button';
+import { AuthContext } from '../../context/auth-context';
 
 export default function Form() {
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const handleButtonClick = (index: number) => {
     setClickedIndex(index);
@@ -15,6 +17,8 @@ export default function Form() {
 
   const handleGuestButtonClick = () => {
     const id = 'guest';
+    authContext?.setIsAdmin(false);
+    authContext?.setRole('guest');
     navigate(`/id=${id}/client/home/shop`, { replace: true });
   };
 

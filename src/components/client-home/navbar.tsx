@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import UserCard from '../user-card/user-card';
 import classNames from 'classnames';
 import { CartContext } from '../../context/cart-context';
-import { Badge } from '@nextui-org/react';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -38,23 +37,21 @@ export default function Navbar() {
           >
             Tienda
           </p>
-          {cartContext && cartContext?.cart.length > 0 ? (
-            <Badge content={cartContext.cart.length} color='danger'>
-              <p
-                className='cursor-pointer h-full flex justify-center items-center'
-                onClick={() => handleSectionChange('cart')}
-              >
-                Carrito
-              </p>
-            </Badge>
-          ) : (
-            <p
-              className='cursor-pointer h-full flex justify-center items-center'
-              onClick={() => handleSectionChange('cart')}
-            >
-              Carrito
-            </p>
-          )}
+
+          <p
+            className='cursor-pointer h-full flex justify-center items-center'
+            onClick={() => handleSectionChange('cart')}
+          >
+            Carrito
+            {cartContext && cartContext.cart.length > 0 && (
+              <>
+                <div className='absolute top-1 -end-4 w-6 h-6 rounded-full bg-green animate-ping'></div>
+                <div className='absolute inline-flex items-center justify-center w-6 h-6 text-sm text-black bg-green rounded-full top-1 -end-4 dark:border-gray-900'>
+                  {cartContext.cart.length}
+                </div>
+              </>
+            )}
+          </p>
         </div>
         <div
           className={classNames(
