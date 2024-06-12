@@ -64,11 +64,7 @@ export default function SalesOverview({ orders }: SalesOverviewProps) {
         <h1 className='font-gabarito text-lg'>Visitantes totales</h1>
         <h2 className='font-gabarito-medium text-3xl mt-3'>{visits.length}</h2>
         <div className='flex font-gabarito mt-[2rem]'>
-          <p
-            className={`text-${
-              visitsChange > 0 ? 'green' : 'red'
-            }`}
-          >
+          <p className={`text-${visitsChange > 0 ? 'green' : 'red'}`}>
             {visitsChange > 0 && '+'}
             {visitsChange.toFixed(1)}%
           </p>

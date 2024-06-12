@@ -1,10 +1,47 @@
+import { useMemo } from 'react';
 import Chart from 'react-apexcharts';
+import { positionType } from '../../../../types/apexcharts-types';
+import { Category, Order, Product } from '../../../../types/http-types';
 
-import { positionType } from '../../../../types/apexcharts-types.ts';
+interface ProductsDonutProps {
+  products: Product[];
+  categories: Category[];
+  orders: Order[];
+}
 
-export default function ProductsDonut() {
+export default function ProductsDonut({
+  products,
+  categories,
+  orders,
+}: ProductsDonutProps) {
+  const { series, labels } = useMemo(() => {
+    const categorySales: { [key: string]: number } = {};
+
+    categories.forEach((category) => {
+      categorySales[category.name] = 0;
+    });
+
+    orders.forEach((order) => {
+      order.products.forEach((item) => {
+        const product = products.find((prod) => prod.id === item.productId);
+        
+        if (
+          product &&
+          Object.prototype.hasOwnProperty.call(categorySales, product.category)
+        ) {
+          categorySales[product.category] += item.quantity;
+        }
+      });
+    });
+
+    const series = Object.values(categorySales);
+    const labels = Object.keys(categorySales);
+
+    return { series, labels };
+  }, [products, categories, orders]);
+
   const state = {
-    series: [68, 43, 15],
+    series,
     options: {
       stroke: {
         width: 0,
@@ -22,16 +59,23 @@ export default function ProductsDonut() {
           },
         },
       },
-      labels: ['Electronics', 'Laptops', 'Iphones'],
+      labels,
       dataLabels: {
         dropShadow: {
           blur: 3,
           opacity: 0.8,
         },
       },
-      colors: ['#e94e2d', '#d2f56a', '#4b6a6f'],
+      colors: [
+        '#e94e2d',
+        '#d2f56a',
+        '#4b6a6f',
+        '#f0abfc',
+        '#b1c94e',
+        '#5a6c8e',
+      ], // Puedes ajustar los colores según tus necesidades
       title: {
-        text: 'Ventas por categoria',
+        text: 'Ventas por categoría',
         style: {
           color: '#ffffff',
         },
