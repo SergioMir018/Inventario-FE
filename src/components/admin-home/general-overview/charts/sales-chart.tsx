@@ -1,50 +1,34 @@
+import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
+import { curveType, alignType } from '../../../../types/apexcharts-types.ts';
+import { Order } from '../../../../types/http-types.ts';
 
-import { curveType } from '../../../../types/apexcharts-types.ts';
-import { alignType } from '../../../../types/apexcharts-types.ts';
+interface SalesChartProps {
+  orders: Order[];
+}
 
-export default function SalesChart() {
-  const state = {
+export default function SalesChart({ orders }: SalesChartProps) {
+  const [state, setState] = useState({
     series: [
-      {
-        name: 'Ganancias',
-        data: [
-          3465, 5278, 3834, 2402, 3354, 2611, 2146, 2053, 6689, 8547, 5525,
-          6017,
-        ],
-      },
-      {
-        name: 'Ordenes',
-        data: [
-          3557, 4170, 6297, 4826, 1434, 1788, 2790, 3973, 7356, 9951, 3702,
-          3535,
-        ],
-      },
+      { name: 'Ganancias', data: [] as number[] },
+      { name: 'Ordenes', data: [] as number[] },
     ],
     options: {
       chart: {
-        zoom: {
-          enabled: false,
-        },
+        zoom: { enabled: false },
+        background: 'transparent',
+        toolbar: { show: false },
       },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: 'smooth' as curveType,
-      },
+      dataLabels: { enabled: false },
+      stroke: { curve: 'smooth' as curveType },
       title: {
         text: 'Ventas vs Ordenes',
         align: 'left' as alignType,
-        style: {
-          color: '#ffffff',
-        },
+        style: { color: '#ffffff' },
       },
       markers: {
         size: 0,
-        hover: {
-          sizeOffset: 6,
-        },
+        hover: { sizeOffset: 6 },
       },
       xaxis: {
         categories: [
@@ -61,41 +45,52 @@ export default function SalesChart() {
           'Nov',
           'Dic',
         ],
+        labels: { style: { colors: '#ffffff' } },
+        axisBorder: { color: '#404040' },
+        axisTicks: { color: '#404040' },
       },
       yaxis: [
         {
           seriesName: 'Ganancias',
           labels: {
-            formatter: function (value: number) {
-              return `$${value}`;
-            },
-            style: {
-              colors: ['#d2f56a'],
-            },
+            formatter: (value: number) => `$${value}`,
+            style: { colors: ['#d2f56a'] },
           },
         },
         {
           seriesName: 'Ordenes',
           opposite: true,
-          labels: {
-            style: {
-              colors: ['#e94e2d'],
-            },
-          },
+          labels: { style: { colors: ['#e94e2d'] } },
         },
       ],
-      grid: {
-        borderColor: '#404040',
-        strokeDashArray: 10,
-      },
+      grid: { borderColor: '#404040', strokeDashArray: 10 },
       colors: ['#d2f56a', '#e94e2d'],
-      legend: {
-        labels: {
-          colors: '#ffffff',
-        },
-      },
+      legend: { labels: { colors: '#ffffff' } },
     },
-  };
+  });
+
+  useEffect(() => {
+    const monthlyData = Array(12)
+      .fill(null)
+      .map(() => ({ orders: 0, revenue: 0 }));
+
+    orders.forEach((order) => {
+      const month = new Date(order.creationDate).getMonth();
+      monthlyData[month].orders += 1;
+      monthlyData[month].revenue += order.totalPayment;
+    });
+
+    const ordersData = monthlyData.map((data) => data.orders);
+    const revenueData = monthlyData.map((data) => data.revenue);
+
+    setState((prevState) => ({
+      ...prevState,
+      series: [
+        { name: 'Ganancias', data: revenueData },
+        { name: 'Ordenes', data: ordersData },
+      ],
+    }));
+  }, [orders]);
 
   return (
     <section className='col-span-3 bg-dark pt-3 pl-3 pr-3 rounded-xl'>

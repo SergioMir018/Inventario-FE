@@ -61,3 +61,7 @@ export type User = {
   name: string;
   email: string;
 };
+
+export type Visit = {
+  date: string;
+}

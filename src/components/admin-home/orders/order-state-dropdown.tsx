@@ -73,11 +73,11 @@ export default function OrderStateDropDown({
       {isOpen && (
         <div
           id='dropdown'
-          className='bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-metal
+          className='divide-y divide-gray-100 rounded-lg shadow w-full bg-metal
         absolute pointer bottom-12 animate-fade-up animate-duration-100 animate-ease-in-out'
         >
           <ul
-            className='py-2 text-sm text-gray-700 dark:text-gray-200 font-gabarito-medium'
+            className='py-2 text-sm text-gray-200 font-gabarito-medium'
             aria-labelledby='dropdownDefaultButton'
           >
             <li>

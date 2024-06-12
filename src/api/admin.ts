@@ -38,7 +38,18 @@ export const fetchOrders = async (): Promise<Order[]> => {
 
     return response.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error fetching orders:', error);
+    throw error;
+  }
+};
+
+export const fetchCompletedOrders = async (): Promise<Order[]> => {
+  try {
+    const response = await axios.get(`${BASE_URL}/order/completed`);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching orders:', error);
     throw error;
   }
 };

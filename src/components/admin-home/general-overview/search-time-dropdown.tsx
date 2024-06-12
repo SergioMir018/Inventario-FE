@@ -66,11 +66,11 @@ export default function SearchTimeDropDown() {
       {isOpen && (
         <div
           id='dropdown'
-          className='z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-metal
+          className='z-10 divide-y divide-gray-100 rounded-lg shadow w-44 bg-metal
         absolute pointer right-52 animate-fade-left animate-duration-100 animate-ease-in-out'
         >
           <ul
-            className='py-2 text-sm text-gray-700 dark:text-gray-200 font-gabarito-medium'
+            className='py-2 text-sm text-gray-200 font-gabarito-medium'
             aria-labelledby='dropdownDefaultButton'
           >
             <li>
