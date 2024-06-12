@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../../context/cart-context';
 import { CartItemProduct } from '../../../types/shop';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/auth-context';
 
 interface ProductDetailProps {
   product: Product | undefined;
@@ -11,6 +12,7 @@ interface ProductDetailProps {
 
 export default function ProductDetails({ product }: ProductDetailProps) {
   const cartContext = useContext(CartContext);
+  const authContext = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -19,7 +21,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   );
 
   const handleAddToCart = () => {
-    if (cartContext?.canShop) {
+    if (authContext?.role !== 'guest') {
       if (product && cartContext && !isProductInCart) {
         const newItem: CartItemProduct = {
           itemId: product.id,

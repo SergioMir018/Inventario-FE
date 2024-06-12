@@ -5,12 +5,16 @@ import Footer from '../footer';
 import ProductDetails from './product-details';
 import { Product } from '../../../types/http-types';
 import BackIcon from '../../../icons/back-icon';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import SingUpRequest from '../sing-up-request';
 
 export default function ProductDetailsSection() {
   const productParamsId = useProductId();
+  const location = useLocation();
 
   const { id } = useParams();
+
+  const isSingUpRequestRoute = location.pathname.includes('singUpRequest');
 
   const navigate = useNavigate();
 
@@ -33,6 +37,7 @@ export default function ProductDetailsSection() {
 
   return (
     <section className='w-full min-h-screen flex flex-col justify-between text-white font-gabarito'>
+      {isSingUpRequestRoute && <SingUpRequest />}
       <button
         onClick={navigateBack}
         className='absolute top-5 left-5 flex gap-1 items-center text-xl font-gabarito-medium hover:bg-white hover:text-black transition duration-100 px-5 py-2 rounded-md'
