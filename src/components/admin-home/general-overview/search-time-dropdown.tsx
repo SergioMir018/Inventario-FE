@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import useOutsideClick from '../../../hooks/useOutsideClickHook';
 
-export default function SearchTimeDropDown() {
+interface SearchTimeDropDownProps {
+  onPeriodChange: (period: string) => void;
+}
+
+export default function SearchTimeDropDown({
+  onPeriodChange,
+}: SearchTimeDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [period, setPeriod] = useState('Período');
   const dropdownRef = useRef(null);
@@ -27,6 +33,7 @@ export default function SearchTimeDropDown() {
 
   const handleDropdownClick = (newPeriod: string) => {
     setPeriod(newPeriod);
+    onPeriodChange(newPeriod);
     setIsOpen(false);
   };
 

@@ -8,7 +8,7 @@ export default function Filters() {
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getCategories = async () => {
       try {
         const categoriesData = await fetchCategories();
         setCategories(categoriesData);
@@ -17,7 +17,7 @@ export default function Filters() {
       }
     };
 
-    getProducts();
+    getCategories();
   }, []);
 
   return (
