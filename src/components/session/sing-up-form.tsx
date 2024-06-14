@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import FormButton from './form-button';
 import axios from 'axios';
-import { BASE_URL } from '../../types/constants,';
+import { BASE_URL } from '../../types/constants';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth-context';

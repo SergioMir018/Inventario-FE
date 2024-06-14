@@ -1,5 +1,5 @@
 import { Product } from '../../../types/http-types';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import { useContext } from 'react';
 import { CartContext } from '../../../context/cart-context';
 import { CartItemProduct } from '../../../types/shop';

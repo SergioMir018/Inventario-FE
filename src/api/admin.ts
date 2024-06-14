@@ -1,7 +1,7 @@
 // api.js
 import axios from 'axios';
 import { HTTPOrderResponse, Order, Product } from '../types/http-types';
-import { BASE_URL } from '../types/constants,';
+import { BASE_URL } from '../types/constants';
 
 export const fetchProducts = async (): Promise<Product[]> => {
   try {
@@ -54,7 +54,9 @@ export const fetchCompletedOrders = async (): Promise<Order[]> => {
   }
 };
 
-export const fetchOrderById = async (id: string): Promise<HTTPOrderResponse> => {
+export const fetchOrderById = async (
+  id: string
+): Promise<HTTPOrderResponse> => {
   try {
     const response = await axios.get(`${BASE_URL}/order/searchId`, {
       params: {

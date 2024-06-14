@@ -1,7 +1,7 @@
 // api.js
 import axios from 'axios';
 import { User } from '../types/http-types';
-import { BASE_URL } from '../types/constants,';
+import { BASE_URL } from '../types/constants';
 
 export const fetchUser = async (searchId: string): Promise<User> => {
   try {

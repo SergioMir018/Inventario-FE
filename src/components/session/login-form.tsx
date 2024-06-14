@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HTTPLogin } from '../../types/http-types';
-import { BASE_URL } from '../../types/constants,';
+import { BASE_URL } from '../../types/constants';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth-context';
 
@@ -54,7 +54,6 @@ export default function LoginForm() {
               },
             }
           );
-
         } catch (e) {
           console.log(e);
         }

@@ -1,5 +1,5 @@
 import { Product } from '../../../types/http-types';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Badge from '../../shared/badge';
@@ -9,12 +9,11 @@ interface ProductItemProps {
 }
 
 export default function ProductsItem({ product }: ProductItemProps) {
-
   const navigate = useNavigate();
 
-    const location = useLocation();
+  const location = useLocation();
 
-    const isAdmin = location.pathname.includes('admin');
+  const isAdmin = location.pathname.includes('admin');
 
   const handleDeleteButtonAction = async () => {
     try {
@@ -59,7 +58,10 @@ export default function ProductsItem({ product }: ProductItemProps) {
           <p className='text-white ml-5 text-2xl font-gabarito-medium pt-5'>
             {product.name}
           </p>
-          <Badge styles='mt-5 mr-6' text={product.category} />
+          <Badge
+            styles='mt-5 mr-6'
+            text={product.category}
+          />
         </div>
         <p className='text-white/50 mx-5 font-gabarito pt-5'>
           {product.short_desc}

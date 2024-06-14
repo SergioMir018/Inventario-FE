@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Order, Visit } from '../../../../types/http-types';
-import { BASE_URL } from '../../../../types/constants,';
+import { BASE_URL } from '../../../../types/constants';
 import axios from 'axios';
 import { usePageStats } from '../../../../hooks/usePageStats';
 

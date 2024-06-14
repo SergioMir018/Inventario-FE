@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Product } from '../../../types/http-types';
 import { CartItemProduct } from '../../../types/shop';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import { useNavigate, useParams } from 'react-router-dom';
 import Badge from '../../shared/badge';
 import { AuthContext } from '../../../context/auth-context';
@@ -24,7 +24,6 @@ export default function ShopProductsItem({ product }: ShopProductsItemProps) {
   );
 
   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
-
     event.stopPropagation();
 
     if (authContext?.role !== 'guest') {
@@ -65,7 +64,10 @@ export default function ShopProductsItem({ product }: ShopProductsItemProps) {
           <p className='text-white ml-5 text-2xl font-gabarito-medium pt-2'>
             {product.name}
           </p>
-          <Badge styles='mt-2' text={product.category} />
+          <Badge
+            styles='mt-2'
+            text={product.category}
+          />
         </div>
         <p className='text-white/50 mx-5 text-sm font-gabarito pt-2 w-[70%]'>
           {product.short_desc}
