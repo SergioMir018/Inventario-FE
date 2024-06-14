@@ -7,7 +7,7 @@ export default function OrdersSection() {
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getOrders = async () => {
       try {
         const ordersData = await fetchOrders();
         setOrders(ordersData);
@@ -16,7 +16,7 @@ export default function OrdersSection() {
       }
     };
 
-    getProducts();
+    getOrders();
   }, []);
 
   return (

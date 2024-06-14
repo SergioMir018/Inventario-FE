@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import useOutsideClick from '../../../hooks/useOutsideClickHook';
 
-export default function SearchTimeDropDown() {
+interface SearchTimeDropDownProps {
+  onPeriodChange: (period: string) => void;
+}
+
+export default function SearchTimeDropDown({
+  onPeriodChange,
+}: SearchTimeDropDownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [period, setPeriod] = useState('Período');
   const dropdownRef = useRef(null);
@@ -27,6 +33,7 @@ export default function SearchTimeDropDown() {
 
   const handleDropdownClick = (newPeriod: string) => {
     setPeriod(newPeriod);
+    onPeriodChange(newPeriod);
     setIsOpen(false);
   };
 
@@ -66,11 +73,11 @@ export default function SearchTimeDropDown() {
       {isOpen && (
         <div
           id='dropdown'
-          className='z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-metal
+          className='z-10 divide-y divide-gray-100 rounded-lg shadow w-44 bg-metal
         absolute pointer right-52 animate-fade-left animate-duration-100 animate-ease-in-out'
         >
           <ul
-            className='py-2 text-sm text-gray-700 dark:text-gray-200 font-gabarito-medium'
+            className='py-2 text-sm text-gray-200 font-gabarito-medium'
             aria-labelledby='dropdownDefaultButton'
           >
             <li>

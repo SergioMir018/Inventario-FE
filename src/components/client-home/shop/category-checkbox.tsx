@@ -1,11 +1,13 @@
-export default function CategoryCheckbox() {
+import { Checkbox } from '@nextui-org/react';
+
+interface CategoryCheckboxProps {
+  category: string;
+}
+
+export default function CategoryCheckbox({category}: CategoryCheckboxProps) {
   return (
-    <div className='flex gap-2'>
-      <input
-        type='checkbox'
-        className='bg-dark'
-      />
-      <label>Categoria</label>
-    </div>
+    <Checkbox color='success'>
+      <label className='text-white'>{category}</label>
+    </Checkbox>
   );
 }

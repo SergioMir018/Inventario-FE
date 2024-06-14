@@ -16,7 +16,9 @@ export default function UserCard() {
       }
     };
 
-    if (userId) {
+    if (userId === 'guest') {
+      setName('Guest')
+    } else {
       getUser(userId);
     }
   }, [userId]);

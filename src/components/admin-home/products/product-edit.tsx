@@ -1,13 +1,15 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import PopUp from '../../shared/pop-up';
-import { Product } from '../../../types/http-types';
+import { Category, Product } from '../../../types/http-types';
 import { fetchProductById } from '../../../api/admin';
 import { useNavigate } from 'react-router-dom';
 import EditIcon from '../../../icons/edit-icon';
 import arrayBufferToBase64 from '../../../utils/arrayBufferToBase64';
 import axios from 'axios';
+import { fetchCategories } from '../../../api/client';
+import CategoryDropDown from './category-dropdown';
 
 interface ProductDetailsProps {
   id: string;
@@ -27,8 +29,13 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
   const [file, setFile] = useState<string>();
   const [fileScr, setFileScr] = useState<string>('');
   const [fileExt, setFileExt] = useState('');
+  const [category, setSelectedCategory] = useState('');
+  const [categoryId, setSelectedCategoryId] = useState('');
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [areChanges, setAreChanges] = useState(false);
 
-  const { register, handleSubmit, setValue } = useForm<IUpdateProductForm>();
+  const { register, handleSubmit, setValue, watch } =
+    useForm<IUpdateProductForm>();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -44,8 +51,48 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
       }
     };
 
+    const getCategories = async () => {
+      try {
+        const categoriesData = await fetchCategories();
+        setCategories(categoriesData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getCategories();
     getProduct();
   }, [id, setValue]);
+
+  useEffect(() => {
+    const subscription = watch((value) => {
+      if (initialProduct) {
+        const changes = {
+          name: value.name !== initialProduct.name,
+          short_desc: value.short_desc !== initialProduct.short_desc,
+          desc: value.desc !== initialProduct.desc,
+          price:
+            value.price?.replace(',', '.') !== initialProduct.price.toString(),
+          file: !!file,
+        };
+
+        setAreChanges(
+          changes.name ||
+            changes.short_desc ||
+            changes.desc ||
+            changes.price ||
+            changes.file
+        );
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, initialProduct, file]);
+
+  useEffect(() => {
+    if(initialProduct) {
+      setAreChanges(category !== initialProduct.category);
+    }
+  }, [category, initialProduct]);
 
   const handleCancelAction = () => {
     navigate('products');
@@ -58,7 +105,7 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
       const extension = selectedFile.name.split('.').pop();
       setFileExt(extension || '');
 
-      setFileScr(URL.createObjectURL(selectedFile));
+      setAreChanges(true);
 
       const reader = new FileReader();
       reader.readAsArrayBuffer(selectedFile);
@@ -67,6 +114,7 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
         const arrayBuffer = reader.result;
         const base64Image = arrayBufferToBase64(arrayBuffer);
         setFile(base64Image);
+        setFileScr(URL.createObjectURL(selectedFile));
       };
     }
   };
@@ -76,27 +124,39 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
   ) => {
     try {
       const changes: Partial<
-        IUpdateProductForm & { photo?: string; imageExt?: string }
+        IUpdateProductForm & {
+          photo?: string;
+          imageExt?: string;
+          category?: string;
+        }
       > = {};
 
       if (data.name && data.name !== initialProduct?.name) {
         changes.name = data.name;
       }
+
       if (data.short_desc && data.short_desc !== initialProduct?.short_desc) {
         changes.short_desc = data.short_desc;
       }
+
       if (data.desc && data.desc !== initialProduct?.desc) {
         changes.desc = data.desc;
       }
+
       if (
         data.price &&
         data.price.replace(',', '.') !== initialProduct?.price.toString()
       ) {
         changes.price = data.price.replace(',', '.');
       }
+
       if (file) {
         changes.photo = file;
         changes.imageExt = fileExt;
+      }
+
+      if (categoryId !== initialProduct?.category) {
+        changes.category = categoryId;
       }
 
       const filteredChanges = Object.fromEntries(
@@ -148,6 +208,7 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
               className='h-full w-full object-cover rounded-tr-lg rounded-tl-lg'
             />
             <button
+              type='button'
               onClick={handleEditImageClick}
               className='bg-dark absolute top-5 right-5 w-10 h-10 flex justify-center items-center rounded-full hover:bg-dark/80 transition duration-100'
             >
@@ -165,26 +226,37 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
             <h1 className='text-2xl font-gabarito-bold'>
               Edita la info del producto
             </h1>
-            <label className='text-white/50 font-gabarito pt-3'>Nombre:</label>
+            <label className='text-white font-gabarito pt-3'>
+              Categoría del producto
+            </label>
+            <CategoryDropDown
+              isEdit={true}
+              productCategory={product?.category}
+              categories={categories}
+              category={category}
+              setCategory={setSelectedCategory}
+              setCategoryId={setSelectedCategoryId}
+            />
+            <label className='text-white/50 font-gabarito pt-3'>Nombre</label>
             <input
               {...register('name')}
               className='w-full p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm'
             />
             <label className='text-white/50 font-gabarito pt-3'>
-              Descripcion corta:
+              Descripción corta
             </label>
             <textarea
               {...register('short_desc')}
               className='w-full h-15 resize-none p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm'
             />
             <label className='text-white/50 font-gabarito pt-3'>
-              Descripcion:
+              Descripción
             </label>
             <textarea
               {...register('desc')}
               className='w-full h-18 resize-none p-1 font-gabarito bg-transparent outline-none ring ring-white/50 focus:ring focus:ring-white mt-1 mb-2 rounded-sm'
             />
-            <label className='text-white/50 font-gabarito pt-3'>Precio:</label>
+            <label className='text-white/50 font-gabarito pt-3'>Precio</label>
             <input
               {...register('price')}
               type='text'
@@ -200,7 +272,12 @@ export default function ProductEdit({ id }: ProductDetailsProps) {
               </button>
               <button
                 type='submit'
-                className='bg-white w-full text-black mt-5 py-2 font-gabarito-bold rounded-md hover:bg-white/80 transition duration-100'
+                className={`bg-white w-full text-black mt-5 py-2 font-gabarito-bold rounded-md transition duration-100 ${
+                  !areChanges
+                    ? 'opacity-50 cursor-not-allowed'
+                    : 'hover:bg-white/80'
+                }`}
+                disabled={!areChanges}
               >
                 Editar
               </button>

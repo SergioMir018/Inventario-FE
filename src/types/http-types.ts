@@ -20,6 +20,11 @@ export type Product = {
   category: string;
 };
 
+export type Category = {
+  id: string;
+  name: string;
+}
+
 export type Order = {
   orderId: string;
   status: string;
@@ -57,3 +62,7 @@ export type User = {
   name: string;
   email: string;
 };
+
+export type Visit = {
+  date: string;
+}

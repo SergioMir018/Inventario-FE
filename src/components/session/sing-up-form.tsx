@@ -1,8 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import FormButton from './form-button';
 import axios from 'axios';
-import { BASE_URL } from '../../types/constants,';
+import { BASE_URL } from '../../types/constants';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth-context';
 
 interface ISinUpForm {
   name: string;
@@ -12,6 +14,7 @@ interface ISinUpForm {
 
 export default function SingUpForm() {
   const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm<ISinUpForm>();
 
@@ -35,6 +38,9 @@ export default function SingUpForm() {
       );
 
       const id = response.data;
+
+      authContext?.setIsAdmin(false);
+      authContext?.setRole('client');
 
       navigate(`/id=${id}/client/home/shop`, { replace: true });
     } catch (error) {
