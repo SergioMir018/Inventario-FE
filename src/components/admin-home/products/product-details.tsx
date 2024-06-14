@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import PopUp from '../../shared/pop-up';
 import { Product } from '../../../types/http-types';
 import { fetchProductById } from '../../../api/admin';

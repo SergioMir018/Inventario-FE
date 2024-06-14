@@ -26,7 +26,7 @@ export default function Filters() {
       <div className='w-full text-lg flex flex-col ml-5 mt-4'>
         <h3 className='text-white/80'>Categorías</h3>
         {categories.map(category => {
-          return <CategoryCheckbox key={category.name} category={category.name} />
+          return <CategoryCheckbox key={category.id} category={category.name} />
         })}
       </div>
       <div className='w-full text-lg flex flex-col mt-3'>

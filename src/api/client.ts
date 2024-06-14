@@ -1,6 +1,6 @@
-import axios from "axios";
-import { BASE_URL } from "../types/constants,";
-import { Category } from "../types/http-types";
+import axios from 'axios';
+import { BASE_URL } from '../types/constants';
+import { Category } from '../types/http-types';
 
 export const fetchCategories = async (): Promise<Category[]> => {
   try {

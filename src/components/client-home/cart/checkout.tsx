@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../../context/cart-context';
 import { useUserId } from '../../../hooks/useUserId';
 import axios from 'axios';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import { OrderProduct } from '../../../types/http-types';
 
 interface ICheckoutForm {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { OrderProduct, Product } from '../../../types/http-types';
-import { BASE_URL } from '../../../types/constants,';
+import { BASE_URL } from '../../../types/constants';
 import { fetchProductById } from '../../../api/admin';
 
 interface OrderDetailsTableItemProps {
@@ -10,19 +10,18 @@ interface OrderDetailsTableItemProps {
 export default function OrderDetailsTableItem({
   orderProduct,
 }: OrderDetailsTableItemProps) {
+  const [product, setProduct] = useState<Product>();
 
-    const [product, setProduct] = useState<Product>();
+  useEffect(() => {
+    const getProduct = async () => {
+      const fetchedProduct = await fetchProductById(orderProduct.productId);
+      if (fetchedProduct) {
+        setProduct(fetchedProduct);
+      }
+    };
 
-    useEffect(() => {
-      const getProduct = async () => {
-        const fetchedProduct = await fetchProductById(orderProduct.productId);
-        if (fetchedProduct) {
-          setProduct(fetchedProduct);
-        }
-      };
-
-      getProduct();
-    }, [orderProduct.productId]);
+    getProduct();
+  }, [orderProduct.productId]);
 
   return (
     <tr key={product?.id}>
