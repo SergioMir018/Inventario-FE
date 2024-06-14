@@ -1,7 +1,7 @@
-import React from 'react'
+import ProductDetailsSection from "../components/client-home/product/product";
 
-export default function product() {
+export default function Product() {
   return (
-    <div>product</div>
+    <ProductDetailsSection />
   )
 }

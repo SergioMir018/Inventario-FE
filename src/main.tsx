@@ -13,8 +13,8 @@ import Shop from './components/client-home/shop/shop';
 import Cart from './components/client-home/cart/cart';
 import { CartProvider } from './context/cart-context';
 import { NextUIProvider } from '@nextui-org/react';
-import ProductDetailsSection from './components/client-home/product/product';
 import { AuthProvider } from './context/auth-context';
+import Product from './pages/product';
 
 const router = createHashRouter([
   {
@@ -74,11 +74,11 @@ const router = createHashRouter([
         children: [
           {
             path: 'product/:productId',
-            element: <ProductDetailsSection />,
+            element: <Product />,
             children: [
               {
                 path: 'singUpRequest',
-                element: <ProductDetailsSection />,
+                element: <Product />,
               },
             ],
           },
