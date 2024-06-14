@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import CloseIcon from '../../icons/close-icon';
 import PopUp from '../shared/pop-up';
 
-export default function SinUoRequest() {
+export default function SingUpRequest() {
   const navigate = useNavigate();
 
   const closeSingUpRequest = () => {

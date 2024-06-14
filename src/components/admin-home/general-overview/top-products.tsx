@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Category, Order, Product } from '../../../types/http-types.ts';
+import { Order, Product } from '../../../types/http-types.ts';
 import ProductsSearch from './products-search.tsx';
 import TopProductsCategories from './top-products-categories.tsx';
 import TopProductsItem from './top-products-item.tsx';
