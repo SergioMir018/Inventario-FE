@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import UserCard from '../user-card/user-card';
 import classNames from 'classnames';
 import { CartContext } from '../../context/cart-context';
+import LogOutIcon from '../../icons/logout-icon';
+import { Tooltip } from '@nextui-org/react';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -63,8 +65,22 @@ export default function Navbar() {
           )}
         />
       </div>
-      <div className='absolute flex justify-center items-center right-0 top-0 bottom-0 mr-5'>
+      <div className='absolute flex justify-center items-center gap-5 right-0 top-0 bottom-0 mr-5'>
         <UserCard />
+        <Tooltip
+          showArrow={true}
+          delay={0}
+          content='Cerrar sesión'
+        >
+          <Link
+            to={'/session'}
+            className='rounded-full flex flex-row items-center w-full hover:bg-white hover:text-black transition duration-100'
+          >
+            <div className='ml-1'>
+              <LogOutIcon />
+            </div>
+          </Link>
+        </Tooltip>
       </div>
     </nav>
   );
