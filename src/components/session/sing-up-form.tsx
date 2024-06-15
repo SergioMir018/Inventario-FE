@@ -5,6 +5,7 @@ import { BASE_URL } from '../../types/constants';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth-context';
+import { CustomInput } from '../shared/custom-input';
 
 interface ISinUpForm {
   name: string;
@@ -59,10 +60,9 @@ export default function SingUpForm() {
       >
         Nombre
       </label>
-      <input
+      <CustomInput
         {...register('name')}
         type='text'
-        className='w-full p-1 font-gabarito outline-none ring ring-black/50 focus:ring focus:ring-black mt-1 mb-2 rounded-sm'
       />
       <label
         htmlFor='loginNameOrEmail'
@@ -70,10 +70,9 @@ export default function SingUpForm() {
       >
         Email
       </label>
-      <input
+      <CustomInput
         {...register('email')}
         type='email'
-        className='w-full p-1 font-gabarito outline-none ring ring-black/50 focus:ring focus:ring-black mt-1 mb-2 rounded-sm'
       />
       <label
         htmlFor='loginNameOrEmail'
@@ -81,10 +80,9 @@ export default function SingUpForm() {
       >
         Contraseña
       </label>
-      <input
+      <CustomInput
         {...register('password')}
         type='password'
-        className='w-full p-1 font-gabarito outline-none ring ring-black/50 focus:ring focus:ring-black mt-1 mb-5 rounded-sm'
       />
       <FormButton
         text='Crear cuenta'

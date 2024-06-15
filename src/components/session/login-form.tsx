@@ -6,6 +6,7 @@ import { HTTPLogin } from '../../types/http-types';
 import { BASE_URL } from '../../types/constants';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth-context';
+import { CustomInput } from '../shared/custom-input';
 
 interface ILoginForm {
   identifier: string;
@@ -84,10 +85,9 @@ export default function LoginForm() {
       >
         Nombre o Email
       </label>
-      <input
+      <CustomInput
         {...register('identifier')}
         type='text'
-        className='w-full p-1 font-gabarito outline-none ring ring-black/50 focus:ring focus:ring-black mt-1 mb-2 rounded-sm'
       />
       <label
         htmlFor='loginNameOrEmail'
@@ -95,10 +95,9 @@ export default function LoginForm() {
       >
         Contraseña
       </label>
-      <input
+      <CustomInput
         {...register('password')}
         type='text'
-        className='w-full p-1 font-gabarito outline-none ring ring-black/50 focus:ring focus:ring-black mt-1 mb-5 rounded-sm'
       />
       <FormButton
         text='Login'
