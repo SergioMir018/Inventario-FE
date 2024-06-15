@@ -8,7 +8,6 @@ const CustomInput = extendVariants(Input, {
         inputWrapper: [
           'w-full',
           'mt-1',
-          'mb-3',
           'p-1',
           'ring',
           'ring-black/50',
@@ -20,6 +19,12 @@ const CustomInput = extendVariants(Input, {
           'duration-100',
         ],
         input: ['font-gabarito', 'outline-none', 'text-lg'],
+        errorMessage: [
+          'text-lg',
+          'text-white',
+          'font-gabarito-medium',
+          'group-hover:text-red',
+        ],
       },
     },
   },

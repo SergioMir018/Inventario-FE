@@ -17,7 +17,11 @@ export default function SingUpForm() {
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
-  const { register, handleSubmit } = useForm<ISinUpForm>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ISinUpForm>();
 
   const singUpFormAction: SubmitHandler<ISinUpForm> = async (
     data: ISinUpForm
@@ -55,35 +59,57 @@ export default function SingUpForm() {
       onSubmit={handleSubmit(singUpFormAction)}
     >
       <label
-        htmlFor='loginNameOrEmail'
+        htmlFor='name'
         className='text-white font-gabarito group-hover:text-black transition-colors duration-150 ease-in-out'
       >
         Nombre
       </label>
-      <CustomInput
-        {...register('name')}
-        type='text'
-      />
+      <div className='mb-3'>
+        <CustomInput
+          {...register('name', { required: 'Nombre requerido' })}
+          type='text'
+          isInvalid={errors.name ? true : false}
+          errorMessage={errors.name?.message}
+        />
+      </div>
       <label
-        htmlFor='loginNameOrEmail'
+        htmlFor='email'
         className='text-white font-gabarito group-hover:text-black transition-colors duration-150 ease-in-out'
       >
         Email
       </label>
-      <CustomInput
-        {...register('email')}
-        type='email'
-      />
+      <div className='mb-3'>
+        <CustomInput
+          {...register('email', {
+            required: 'Email requerido',
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Email inválido',
+            },
+          })}
+          type='text'
+          isInvalid={errors.email ? true : false}
+          errorMessage={errors.email?.message}
+        />
+      </div>
       <label
-        htmlFor='loginNameOrEmail'
+        htmlFor='password'
         className='text-white font-gabarito group-hover:text-black transition-colors duration-150 ease-in-out'
       >
         Contraseña
       </label>
-      <CustomInput
-        {...register('password')}
-        type='password'
-      />
+      <div className='mb-3'>
+        <CustomInput
+          {...register('password', {
+            required: 'Contraseña requerida',
+            minLength: { value: 4, message: 'Al menos 4 caractéres' },
+            maxLength: { value: 32, message: 'Máximo 32 caractéres' },
+          })}
+          type='password'
+          isInvalid={errors.password ? true : false}
+          errorMessage={errors.password?.message}
+        />
+      </div>
       <FormButton
         text='Crear cuenta'
         useSubmit={true}
