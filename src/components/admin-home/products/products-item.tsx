@@ -27,6 +27,7 @@ export default function ProductsItem({ product }: ProductItemProps) {
       });
 
       if (response.status === 200) {
+        window.location.reload();
         console.error('Éxito al eliminar el producto:', response.data);
       } else {
         console.error('Error al eliminar el producto:', response.data);
