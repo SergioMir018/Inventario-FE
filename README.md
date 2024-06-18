@@ -1,27 +1,23 @@
-# React + TypeScript + Vite
+# Proyecto Web de Inventario
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Integrantes:
+- **Sergio Manuel Mir** (Grupo 303)
+- **Yasser Giraldo Adan** (Grupo 302)
 
-Currently, two official plugins are available:
+## Descripción
+Este proyecto es una aplicación web diseñada para la gestión de inventarios de un e-commerce. Permite a los usuarios registrar, actualizar, eliminar y consultar productos y ordenes en el sistema. La aplicación está construida utilizando React para el frontend y Scala/Akka para el backend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características
+- **Registro de Productos**: Los usuarios pueden agregar nuevos productos al inventario.
+- **Actualización de Productos**: Los usuarios pueden actualizar la información de los productos existentes.
+- **Eliminación de Productos**: Los usuarios pueden eliminar productos del inventario.
+- **Consulta de Productos**: Los usuarios pueden buscar y ver detalles de los productos en el inventario.
+- **Manejar ordenes**: Los usuarios pueden verificar el estado de las ordenes realizadas por los clientes y cambiar su estado
 
-## Expanding the ESLint configuration
+## Tecnologías Utilizadas
+- **Frontend**: React, TypeScript, React Hook Form, Axios, React Router
+- **Backend**: Scala, Akka, Postgres
+- **Estilos**: Tailwind CSS
+- **Gestión de Estado**: Context API
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Repositorio del backend [aquí](https://github.com/SergioMir018/inventario-server)
