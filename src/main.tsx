@@ -15,6 +15,7 @@ import { CartProvider } from './context/cart-context';
 import { NextUIProvider } from '@nextui-org/react';
 import { AuthProvider } from './context/auth-context';
 import Product from './pages/product';
+import React from 'react';
 
 const router = createHashRouter([
   {
@@ -119,11 +120,13 @@ const router = createHashRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <NextUIProvider>
-    <AuthProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </AuthProvider>
-  </NextUIProvider>
+  <React.StrictMode>
+    <NextUIProvider>
+      <AuthProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </AuthProvider>
+    </NextUIProvider>
+  </React.StrictMode>
 );
