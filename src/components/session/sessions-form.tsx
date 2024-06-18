@@ -28,7 +28,7 @@ export default function Form() {
         Bienvenid@
       </h1>
       <p className='text-white font-gabarito-medium w-full text-center group-hover:text-black transition-colors duration-150 ease-in-out'>
-        Inicia sesión, loggeate o entra como invitado para empezar
+        Crea una sesión, loggeate o entra como invitado para empezar
       </p>
       <div className='w-screen justify-center flex gap-4'>
         <SectionButton

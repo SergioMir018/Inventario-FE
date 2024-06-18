@@ -64,8 +64,11 @@ export default function Checkout() {
           }
         );
 
-        console.log('Orden creada con exito:', response.data);
-        navigate('cart');
+        if (response.status === 201) {
+          console.log('Orden creada con exito:', response.data);
+          cartContext.setCart([]);
+          navigate('shop');
+        }
       } catch (error) {
         console.error('Error al crear la orden:', error);
       }

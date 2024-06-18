@@ -10,6 +10,11 @@ export type HTTPLogin = {
   role: string;
 };
 
+export type HTTPLoginError = {
+  errorType: string;
+  reason: string;
+}
+
 export type Product = {
   id: string;
   name: string;
